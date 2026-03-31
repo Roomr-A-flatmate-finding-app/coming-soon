@@ -1,7 +1,77 @@
 /* ============================================================
-   ROOMR — index.css v2.0
-   Syne (display) + DM Sans (body) · Orange/Yellow/Black
+   ROOMR — index.css v2.2
+   Manrope (local) · Orange/Yellow/Black
    ============================================================ */
+
+/* ============================================================
+   MANROPE LOCAL FONT — @font-face
+   ─────────────────────────────────────────────────────────────
+   OPTION A — Variable font (recommended, single file):
+     Place in: fonts/Manrope-VariableFont_wght.woff2
+               fonts/Manrope-VariableFont_wght.ttf  (fallback)
+
+   OPTION B — Static fonts (if you only have individual weights):
+     Place in: fonts/Manrope-Regular.woff2     (400)
+               fonts/Manrope-Medium.woff2      (500)
+               fonts/Manrope-SemiBold.woff2    (600)
+               fonts/Manrope-Bold.woff2        (700)
+               fonts/Manrope-ExtraBold.woff2   (800)
+   ============================================================ */
+
+/* ── OPTION A: Variable font (uncomment this block) ─────────── */
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-VariableFont_wght.woff2') format('woff2 supports variations'),
+       url('fonts/Manrope-VariableFont_wght.woff2') format('woff2'),
+       url('fonts/Manrope-VariableFont_wght.ttf')   format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── OPTION B: Static fonts (uncomment if you have individual files) ── */
+/*
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-Regular.woff2') format('woff2'),
+       url('fonts/Manrope-Regular.ttf')   format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-Medium.woff2') format('woff2'),
+       url('fonts/Manrope-Medium.ttf')   format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-SemiBold.woff2') format('woff2'),
+       url('fonts/Manrope-SemiBold.ttf')   format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-Bold.woff2') format('woff2'),
+       url('fonts/Manrope-Bold.ttf')   format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-ExtraBold.woff2') format('woff2'),
+       url('fonts/Manrope-ExtraBold.ttf')   format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+*/
 
 /* ============================================================
    CSS CUSTOM PROPERTIES
@@ -35,8 +105,9 @@
   --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   --transition-bounce: 0.6s cubic-bezier(0.34, 1.4, 0.64, 1);
 
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  /* ── Both roles now use Manrope ── */
+  --font-display: 'Manrope', sans-serif;
+  --font-body:    'Manrope', sans-serif;
 }
 
 [data-theme="dark"] {
@@ -96,6 +167,7 @@ body {
   color: var(--text);
   line-height: 1.65;
   overflow-x: hidden;
+  max-width: 100vw;
   transition: background var(--transition-slow), color var(--transition-slow);
   cursor: none;
 }
@@ -113,6 +185,7 @@ button { cursor: none; font-family: var(--font-body); }
 .container {
   width: min(1200px, 92%);
   margin: 0 auto;
+  max-width: 100%;
 }
 
 .noise-overlay {
@@ -140,7 +213,7 @@ button { cursor: none; font-family: var(--font-body); }
 }
 
 /* ============================================================
-   TYPOGRAPHY — KEY FIX: tighter letter-spacing, smaller max clamp
+   TYPOGRAPHY
    ============================================================ */
 .section-label {
   display: inline-flex;
@@ -148,7 +221,7 @@ button { cursor: none; font-family: var(--font-body); }
   gap: 6px;
   font-family: var(--font-body);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--orange);
@@ -161,11 +234,10 @@ button { cursor: none; font-family: var(--font-body); }
 
 .section-title {
   font-family: var(--font-display);
-  /* FIXED: reduced max from 3.6rem → 2.9rem, tightened letter-spacing */
   font-size: clamp(1.8rem, 4vw, 2.9rem);
   font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   margin-bottom: 1rem;
 }
 
@@ -184,6 +256,9 @@ button { cursor: none; font-family: var(--font-body); }
   background-clip: text;
 }
 
+/* ============================================================
+   CURSOR
+   ============================================================ */
 .cursor {
   position: fixed;
   top: 0; left: 0;
@@ -238,6 +313,9 @@ body.cursor-hover .cursor-trail {
   to { transform: translate(-50%, -50%) scale(3); opacity: 0; }
 }
 
+/* ============================================================
+   FLOATING STICKERS
+   ============================================================ */
 .floating-stickers {
   position: fixed;
   inset: 0;
@@ -268,6 +346,9 @@ body.cursor-hover .cursor-trail {
   70%  { transform: translateY(8px) rotate(-3deg); }
 }
 
+/* ============================================================
+   REVEAL
+   ============================================================ */
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -280,6 +361,9 @@ body.cursor-hover .cursor-trail {
   transform: translateY(0);
 }
 
+/* ============================================================
+   NAVBAR
+   ============================================================ */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -305,35 +389,127 @@ body.cursor-hover .cursor-trail {
   display: flex;
   align-items: center;
   gap: 2rem;
+  max-width: 100%;
 }
 
+/* ============================================================
+   LOGO — R + image + MR + dot
+   ============================================================ */
 .nav-logo {
-  display: flex;
-  align-items: baseline;
+  display: inline-flex;
+  align-items: center;
   gap: 0;
   flex-shrink: 0;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: var(--text);
-  transition: color var(--transition);
+  margin-right: auto;
+  text-decoration: none;
+  line-height: 1;
 }
 
+/* "R" and "MR" letterforms */
+.logo-letter {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1;
+  /* Subtle text shadow so letters pop in both themes */
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+
+/* Gradient dot after MR */
 .logo-dot {
   background: var(--grad-brand-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-family: var(--font-display);
   font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-left: 1px;
+}
+
+/* Logo image (replaces the "oo") */
+.logo-img {
+  /* Height matches the cap-height of the 1.55rem letters */
+  height: 1.25rem;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  /* Slight vertical nudge so it optically centres with uppercase letterforms */
+  margin-top: -1px;
+  /* Small horizontal breathing room between R / MR */
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/* Light mode: letters use brand orange so they stay legible on light bg */
+[data-theme="light"] .logo-letter {
+  color: var(--orange);
+  text-shadow: none;
+}
+
+/* ── Footer logo ── */
+.footer-logo-link {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
   line-height: 1;
 }
 
+.footer-logo-letter {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+
+[data-theme="light"] .footer-logo-letter {
+  color: var(--orange);
+  text-shadow: none;
+}
+
+.footer-logo-img {
+  height: 1.5rem;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  margin-top: -1px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.footer-logo-dot {
+  background: var(--grad-brand-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-left: 1px;
+}
+
+/* ============================================================
+   NAV LINKS
+   ============================================================ */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 0.2rem;
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .nav-links a {
@@ -354,8 +530,10 @@ body.cursor-hover .cursor-trail {
   display: flex;
   align-items: center;
   gap: 0.9rem;
+  margin-left: auto;
 }
 
+/* Theme toggle */
 .theme-toggle { position: relative; cursor: none; }
 .theme-toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
 
@@ -395,13 +573,16 @@ input:checked ~ .toggle-track .toggle-thumb { transform: translateX(24px); }
 input:checked ~ .toggle-track .toggle-icon.moon { opacity: 0; transform: scale(0.5); }
 input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1); }
 
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-family: var(--font-body);
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 11px 24px;
   border-radius: var(--radius-full);
   border: none;
@@ -470,14 +651,20 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
 .btn-arrow { transition: transform var(--transition); display: inline-block; }
 .btn:hover .btn-arrow { transform: translateX(4px); }
 
+/* ============================================================
+   HAMBURGER
+   ============================================================ */
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
   background: none;
   border: none;
-  padding: 4px;
-  cursor: none;
+  padding: 6px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1002;
+  flex-shrink: 0;
 }
 .hamburger span {
   display: block;
@@ -485,13 +672,29 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   background: var(--text);
   border-radius: 2px;
   transition: transform var(--transition), opacity var(--transition);
+  pointer-events: none;
 }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  backdrop-filter: blur(2px);
+}
+.nav-overlay.open {
+  display: block;
+  opacity: 1;
+}
+
 /* ============================================================
-   HERO — tightened letter-spacing on headline
+   HERO
    ============================================================ */
 .hero {
   min-height: 100svh;
@@ -592,8 +795,7 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   font-size: clamp(3rem, 7vw, 5.2rem);
   font-weight: 800;
   line-height: 1.06;
-  /* FIXED: more negative letter-spacing to counteract Syne 800 width */
-  letter-spacing: -0.055em;
+  letter-spacing: -0.05em;
   margin-bottom: 1.5rem;
 }
 
@@ -653,6 +855,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   gap: 1rem;
 }
 
+/* ============================================================
+   MATCH CARD
+   ============================================================ */
 .match-card {
   width: 310px;
   background: var(--bg-card);
@@ -748,7 +953,7 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
 
 .bar-label {
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-3);
   display: block;
   margin-bottom: 7px;
@@ -921,6 +1126,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
+/* ============================================================
+   MARQUEE
+   ============================================================ */
 .marquee-section {
   padding: 1.2rem 0;
   overflow: hidden;
@@ -990,7 +1198,7 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
 }
 
 /* ============================================================
-   STATS STRIP — added .stat-unit for the "min" label
+   STATS STRIP
    ============================================================ */
 .stats-strip {
   padding: 3.5rem 0;
@@ -1027,7 +1235,6 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   margin-bottom: 6px;
 }
 
-/* Unit suffix — smaller, sits inline with the number */
 .stat-unit {
   font-size: 0.52em;
   font-weight: 700;
@@ -1052,6 +1259,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   flex-shrink: 0;
 }
 
+/* ============================================================
+   MEMES
+   ============================================================ */
 .memes {
   padding: var(--space-xl) 5%;
   position: relative;
@@ -1158,6 +1368,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   to { transform: translateX(100%); opacity: 0; }
 }
 
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
 .how-it-works {
   padding: var(--space-xl) 5%;
   background: var(--bg-2);
@@ -1267,6 +1480,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   line-height: 1.68;
 }
 
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
 .testimonials {
   padding: var(--space-xl) 5%;
   position: relative;
@@ -1376,6 +1592,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   white-space: nowrap;
 }
 
+/* ============================================================
+   QUIZ CTA
+   ============================================================ */
 .quiz-cta {
   padding: var(--space-xl) 5%;
   background: var(--bg-2);
@@ -1427,7 +1646,7 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   font-family: var(--font-display);
   font-size: clamp(1.7rem, 4vw, 2.6rem);
   font-weight: 800;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   margin-bottom: 1rem;
 }
 
@@ -1465,6 +1684,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   color: var(--orange);
 }
 
+/* ============================================================
+   ABOUT
+   ============================================================ */
 .about {
   padding: var(--space-xl) 5%;
   position: relative;
@@ -1541,7 +1763,8 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
 .phone-mockup { animation: cardFloat 7s ease-in-out infinite; }
 
 .phone-frame {
-  width: 360px;
+  width: 100%;
+  max-width: 340px;
   background: var(--bg-card);
   border: 1.5px solid var(--border);
   border-radius: 36px;
@@ -1676,6 +1899,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
 .pill-1 { top: 0; right: -20px; animation: cardFloat 5s ease-in-out infinite 1s; }
 .pill-2 { bottom: 28px; left: -30px; animation: cardFloat 6s ease-in-out infinite 2s; }
 
+/* ============================================================
+   WAITLIST
+   ============================================================ */
 .waitlist {
   padding: var(--space-xl) 5%;
   position: relative;
@@ -1891,6 +2117,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   margin-top: 1rem;
 }
 
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
@@ -1904,23 +2133,6 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   padding-bottom: var(--space-md);
   border-bottom: 1px solid var(--border);
   margin-bottom: var(--space-md);
-}
-
-.footer-logo {
-  font-family: var(--font-display);
-  font-size: 1.9rem;
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  color: var(--text);
-  display: block;
-  margin-bottom: 12px;
-}
-
-.footer-logo-dot {
-  background: var(--grad-brand-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .footer-brand p {
@@ -1992,6 +2204,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
 
 .magnetic { transform-origin: center; }
 
+/* ============================================================
+   RESPONSIVE — 1024px
+   ============================================================ */
 @media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
@@ -2018,27 +2233,70 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   .stat-block { flex: 1 1 calc(50% - 1rem); }
 }
 
+/* ============================================================
+   RESPONSIVE — 768px
+   ============================================================ */
 @media (max-width: 768px) {
+  .nav-inner { gap: 0.75rem; }
+
   .nav-links {
     position: fixed;
-    top: 0; right: -100%;
+    top: 0;
+    right: -100%;
     height: 100vh;
-    width: 270px;
+    width: min(300px, 80vw);
     background: var(--bg-card);
     flex-direction: column;
     align-items: flex-start;
-    padding: 6rem 2rem 2rem;
+    padding: 5.5rem 1.5rem 2rem;
     gap: 0.2rem;
     transition: right var(--transition-slow);
     border-left: 1px solid var(--border);
     backdrop-filter: blur(24px);
     z-index: 999;
+    box-shadow: -12px 0 40px rgba(0,0,0,0.25);
   }
   .nav-links.open { right: 0; }
-  .nav-links a { font-size: 1.05rem; width: 100%; padding: 12px 16px; }
+  .nav-links a {
+    font-size: 1.05rem;
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .nav-close-btn {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 36px;
+    height: 36px;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+    line-height: 1;
+  }
+  .nav-close-btn:hover {
+    background: rgba(234,72,30,0.12);
+    color: var(--orange);
+  }
 
   .hamburger { display: flex; }
   .btn-nav { display: none; }
+
+  .theme-toggle .toggle-track { width: 44px; height: 22px; }
+  .toggle-thumb { width: 17px; height: 17px; }
+  input:checked ~ .toggle-track .toggle-thumb { transform: translateX(22px); }
+
+  /* Scale down logo image on mobile */
+  .logo-img { height: 1.05rem; }
+  .logo-letter { font-size: 1.3rem; }
 
   .meme-grid { grid-template-columns: 1fr 1fr; }
   .steps-grid { grid-template-columns: 1fr; }
@@ -2052,21 +2310,73 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   .hero-headline { font-size: clamp(2.4rem, 9vw, 3.5rem); }
   .scroll-indicator { display: none; }
   .pill-1, .pill-2 { display: none; }
+
   .hero-ctas { flex-direction: column; align-items: center; }
-  .btn { width: 100%; justify-content: center; }
+  .hero-ctas .btn { width: auto; min-width: 220px; justify-content: center; }
 
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .step-connector { display: none; }
+
+  .phone-frame { max-width: 280px; border-radius: 28px; }
+
+  .about-visual {
+    width: 100%;
+    overflow: visible;
+    padding: 0 1rem;
+  }
+
+  .phone-mockup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
+/* ============================================================
+   RESPONSIVE — 480px
+   ============================================================ */
 @media (max-width: 480px) {
   .meme-grid { grid-template-columns: 1fr; }
   .footer-links { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
   .stats-grid { flex-direction: column; }
   .stat-block { flex: 1 1 100%; }
+
+  .logo-img { height: 0.95rem; }
+  .logo-letter { font-size: 1.2rem; }
+
+  .memes,
+  .how-it-works,
+  .testimonials,
+  .quiz-cta,
+  .about,
+  .waitlist {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .section-sub { margin-bottom: 2rem; }
+
+  .match-card { width: min(310px, 90vw); }
+  .activity-feed { width: min(310px, 90vw); }
+
+  .phone-frame {
+    max-width: 240px;
+    border-radius: 24px;
+    padding: 12px;
+  }
+
+  .quiz-box { padding: 32px 16px 24px; }
+
+  .footer-top { gap: 1.5rem; }
+  .footer-brand p { max-width: 100%; }
+
+  .section-title { font-size: clamp(1.5rem, 6vw, 2.2rem); }
 }
 
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

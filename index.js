@@ -1,5 +1,5 @@
 /* ============================================================
-   ROOMR — index.js v2.0
+   ROOMR — index.js v2.1 (Mobile Fixed)
    All interactive logic: cursor, scroll, forms, animations
    ============================================================ */
 
@@ -95,26 +95,68 @@
 
 /* ============================================================
    4. NAVBAR — scroll shrink + mobile menu
+   FIX: close via overlay click, X button, nav links, and Escape key
    ============================================================ */
 (function initNavbar() {
-  const navbar    = document.getElementById('navbar');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+  const navbar       = document.getElementById('navbar');
+  const hamburger    = document.getElementById('hamburger');
+  const navLinks     = document.getElementById('navLinks');
+  const navOverlay   = document.getElementById('navOverlay');
+  const navCloseBtn  = document.getElementById('navCloseBtn');
 
+  // Scroll shrink
   window.addEventListener('scroll', () => {
     if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
+  function openMenu() {
+    hamburger.classList.add('active');
+    navLinks.classList.add('open');
+    navOverlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close menu');
+    // FIX: prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    navOverlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open menu');
+    // FIX: restore body scroll
+    document.body.style.overflow = '';
+  }
+
   if (hamburger && navLinks) {
+    // Toggle on hamburger click
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('open');
+      const isOpen = navLinks.classList.contains('open');
+      isOpen ? closeMenu() : openMenu();
     });
+
+    // FIX: Close on X button click
+    if (navCloseBtn) {
+      navCloseBtn.addEventListener('click', closeMenu);
+    }
+
+    // FIX: Close when clicking the overlay backdrop
+    if (navOverlay) {
+      navOverlay.addEventListener('click', closeMenu);
+    }
+
+    // FIX: Close when any nav link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    // FIX: Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        closeMenu();
+        hamburger.focus();
+      }
     });
   }
 })();
@@ -257,14 +299,12 @@
     items = list.querySelectorAll('.activity-item');
     if (!items.length) return;
 
-    // Shift: remove active from top, add new item
     const first = items[0];
     first.style.transition = 'opacity 0.3s, transform 0.3s';
     first.style.opacity  = '0';
     first.style.transform = 'translateX(-12px)';
 
     setTimeout(() => {
-      // Move first to last and update text
       if (feedIdx >= feedQueue.length) {
         feedQueue = shuffleArr([...currentFeed]);
         feedIdx = 0;
@@ -276,7 +316,6 @@
       first.classList.remove('active');
       list.appendChild(first);
 
-      // Re-query after DOM change
       const updatedItems = list.querySelectorAll('.activity-item');
 
       requestAnimationFrame(() => {
@@ -285,7 +324,6 @@
         first.style.transform = 'translateX(0)';
       });
 
-      // Highlight the newest item (last in list, but always show first as active)
       updatedItems.forEach(it => it.classList.remove('active'));
       if (updatedItems[0]) updatedItems[0].classList.add('active');
 
@@ -422,7 +460,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         success = true;
       }
     } else {
-      console.info('📋 Form saved locally (Formspree not configured). Replace mwvwbaaw to enable email.');
+      console.info('📋 Form saved locally (Formspree not configured).');
       console.table(formData);
       success = saveToLocalStorage(formData);
     }

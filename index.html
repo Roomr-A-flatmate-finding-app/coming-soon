@@ -1,651 +1,663 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roomr - Find Your Vibe, Find Your Roommate</title>
-  <meta name="description" content="Stop living with randoms. Find a roommate who actually fits your vibe." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roomr - Find Your Vibe, Find Your Roommate</title>
+    <meta name="description" content="Stop living with randoms. Find a roommate who actually fits your vibe." />
+    <!-- Google Fonts removed — Manrope loaded locally via @font-face in index.css -->
+    <link rel="stylesheet" href="index.css" />
 </head>
+
 <body>
 
-  <!-- NOISE TEXTURE OVERLAY -->
-  <div class="noise-overlay" aria-hidden="true"></div>
+    <!-- NOISE TEXTURE OVERLAY -->
+    <div class="noise-overlay" aria-hidden="true"></div>
 
-  <!-- SCROLL PROGRESS BAR -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- SCROLL PROGRESS BAR -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor" id="cursor">
-    <div class="cursor-dot"></div>
-  </div>
-  <div class="cursor-trail" id="cursorTrail"></div>
-
-  <!-- FLOATING STICKERS -->
-  <div class="floating-stickers" aria-hidden="true">
-    <span class="sticker s1">🏠</span>
-    <span class="sticker s2">✨</span>
-    <span class="sticker s3">🚫</span>
-    <span class="sticker s4">🎯</span>
-    <span class="sticker s5">💥</span>
-    <span class="sticker s6">🔥</span>
-  </div>
-
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <span class="logo-text">roomr</span>
-        <span class="logo-dot">.</span>
-      </a>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#waitlist">Join Waitlist</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <label class="theme-toggle" aria-label="Toggle dark/light mode">
-          <input type="checkbox" id="themeToggle" />
-          <span class="toggle-track">
-            <span class="toggle-thumb">
-              <span class="toggle-icon moon">🌙</span>
-              <span class="toggle-icon sun">☀️</span>
-            </span>
-          </span>
-        </label>
-        <a href="#waitlist" class="btn btn-nav magnetic">
-          <span>Get Early Access</span>
-          <span class="btn-arrow">↗</span>
-        </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor" id="cursor">
+        <div class="cursor-dot"></div>
     </div>
-  </nav>
+    <div class="cursor-trail" id="cursorTrail"></div>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="mesh-blob blob-1"></div>
-      <div class="mesh-blob blob-2"></div>
-      <div class="mesh-blob blob-3"></div>
-      <div class="grid-overlay"></div>
+    <!-- FLOATING STICKERS -->
+    <div class="floating-stickers" aria-hidden="true">
+        <span class="sticker s1">🏠</span>
+        <span class="sticker s2">✨</span>
+        <span class="sticker s3">🚫</span>
+        <span class="sticker s4">🎯</span>
+        <span class="sticker s5">💥</span>
+        <span class="sticker s6">🔥</span>
     </div>
 
-    <div class="hero-content">
-      <div class="hero-badge reveal">
-        <span class="badge-dot"></span>
-        Now in beta · 2,400+ on waitlist
-      </div>
+    <!-- Mobile nav overlay backdrop -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
-      <h1 class="hero-headline reveal">
-        Stop living<br />
-        <span class="gradient-text" data-text="with randoms.">with randoms.</span>
-      </h1>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
 
-      <p class="hero-sub reveal">
-        Find a roommate who actually fits your vibe.<br />
-        <em>Not just whoever replied first.</em>
-      </p>
+            <!-- UPDATED LOGO: R + logo.png (replaces "oo") + MR + dot -->
+            <a href="#" class="nav-logo" aria-label="Roomr home">
+                <span class="logo-letter">R</span>
+                <img src="logo.png" class="logo-img" alt="" aria-hidden="true" />
+                <span class="logo-letter">MR</span>
+                <span class="logo-dot">.</span>
+            </a>
 
-      <div class="hero-ctas reveal">
-        <a href="#waitlist" class="btn btn-primary btn-large magnetic">
-          <span>Find My Roommate</span>
-          <span class="btn-arrow">→</span>
-        </a>
-        <a href="#quiz" class="btn btn-ghost magnetic">
-          <span>Take the Vibe Test</span>
-          <span>✨</span>
-        </a>
-      </div>
-
-      <div class="social-proof reveal">
-        <div class="proof-avatars">
-          <span class="avatar">😊</span>
-          <span class="avatar">🧑‍💻</span>
-          <span class="avatar">👩‍🎨</span>
-          <span class="avatar">🧑‍🎓</span>
-          <span class="avatar">🧑‍🍳</span>
-        </div>
-        <span class="proof-text">2,400+ people already on the waitlist 🔥</span>
-      </div>
-    </div>
-
-    <div class="hero-visual reveal">
-      <!-- Main match card -->
-      <div class="match-card">
-        <div class="match-card-glow"></div>
-        <div class="match-card-inner">
-          <div class="match-header">
-            <span class="match-avatar">👤</span>
-            <div>
-              <p class="match-name">Alex, 23</p>
-              <p class="match-detail">Night owl · Clean freak · WFH</p>
-            </div>
-            <span class="match-pct">98%</span>
-          </div>
-          <div class="match-tags">
-            <span class="tag">🌙 Night Owl</span>
-            <span class="tag">🧹 Clean</span>
-            <span class="tag">🎮 Gamer</span>
-            <span class="tag">🤫 Quiet</span>
-          </div>
-          <div class="match-bar">
-            <span class="bar-label">Compatibility Score</span>
-            <div class="bar-track">
-              <div class="bar-fill" style="--pct:98%"></div>
-            </div>
-          </div>
-          <button class="match-btn ripple">Connect 🤝</button>
-        </div>
-      </div>
-
-      <!-- Activity Feed -->
-      <div class="activity-feed reveal">
-        <div class="activity-header">
-          <span class="activity-dot"></span>
-          <span>Live activity</span>
-        </div>
-        <div class="activity-list" id="activityList">
-          <div class="activity-item active">😊 Ananya just joined from Delhi</div>
-          <div class="activity-item">🎯 New match: 97% compatible</div>
-          <div class="activity-item">✅ Rohan verified his profile</div>
-        </div>
-      </div>
-
-      <div class="hero-badge-float badge-float-1">✅ Verified</div>
-      <div class="hero-badge-float badge-float-2">🏆 Top Match</div>
-    </div>
-
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ========== MARQUEE TICKER ========== -->
-  <div class="marquee-section" aria-hidden="true">
-    <div class="marquee-track marquee-left">
-      <div class="marquee-inner">
-        <span class="m-tag">🌙 Night Owl</span>
-        <span class="m-tag">🧹 Clean AF</span>
-        <span class="m-tag">🤫 Quiet Hours</span>
-        <span class="m-tag">🎮 Gamer</span>
-        <span class="m-tag">📚 Always Studying</span>
-        <span class="m-tag">🏋️ Gym Rat</span>
-        <span class="m-tag">🌿 Plant Parent</span>
-        <span class="m-tag">🐱 Pet Friendly</span>
-        <span class="m-tag">🍳 Home Chef</span>
-        <span class="m-tag">🎵 Audiophile</span>
-        <span class="m-tag">☀️ Early Riser</span>
-        <span class="m-tag">💼 WFH Gang</span>
-        <span class="m-tag">🌙 Night Owl</span>
-        <span class="m-tag">🧹 Clean AF</span>
-        <span class="m-tag">🤫 Quiet Hours</span>
-        <span class="m-tag">🎮 Gamer</span>
-        <span class="m-tag">📚 Always Studying</span>
-        <span class="m-tag">🏋️ Gym Rat</span>
-        <span class="m-tag">🌿 Plant Parent</span>
-        <span class="m-tag">🐱 Pet Friendly</span>
-        <span class="m-tag">🍳 Home Chef</span>
-        <span class="m-tag">🎵 Audiophile</span>
-        <span class="m-tag">☀️ Early Riser</span>
-        <span class="m-tag">💼 WFH Gang</span>
-      </div>
-    </div>
-    <div class="marquee-track marquee-right">
-      <div class="marquee-inner">
-        <span class="m-tag accent">No Parties After 10</span>
-        <span class="m-tag accent">Split Groceries 50/50</span>
-        <span class="m-tag accent">No Smoking Inside</span>
-        <span class="m-tag accent">Guest Policy Agreed</span>
-        <span class="m-tag accent">Netflix Password Sharing OK</span>
-        <span class="m-tag accent">AC at 23°C only fr</span>
-        <span class="m-tag accent">Dishes Same Day</span>
-        <span class="m-tag accent">Quiet After 11PM</span>
-        <span class="m-tag accent">No Parties After 10</span>
-        <span class="m-tag accent">Split Groceries 50/50</span>
-        <span class="m-tag accent">No Smoking Inside</span>
-        <span class="m-tag accent">Guest Policy Agreed</span>
-        <span class="m-tag accent">Netflix Password Sharing OK</span>
-        <span class="m-tag accent">AC at 23°C only fr</span>
-        <span class="m-tag accent">Dishes Same Day</span>
-        <span class="m-tag accent">Quiet After 11PM</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========== STATS STRIP ========== -->
-  <section class="stats-strip">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-block reveal">
-          <span class="stat-number"><span class="counter" data-target="2400">0</span>+</span>
-          <span class="stat-label">On the waitlist</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-block reveal" data-delay="100">
-          <span class="stat-number"><span class="counter" data-target="98">0</span>%</span>
-          <span class="stat-label">Match satisfaction</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-block reveal" data-delay="200">
-          <span class="stat-number">10<span class="stat-unit">min</span></span>
-          <span class="stat-label">Vibe quiz · find your match</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-block reveal" data-delay="300">
-          <span class="stat-number">0</span>
-          <span class="stat-label">Weirdos (guaranteed)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== MEME SECTION ========== -->
-  <section class="memes" id="memes">
-    <div class="container">
-      <div class="section-label reveal">The struggle is real 😭</div>
-      <h2 class="section-title reveal">
-        Roommate Nightmares<br />
-        <span class="gradient-text">We've All Lived Through</span>
-      </h2>
-      <p class="section-sub reveal">Sound familiar? Yeah. We built Roomr because of this.</p>
-
-      <div class="meme-grid">
-        <div class="meme-card reveal tilt-card" data-delay="0">
-          <div class="meme-card-inner">
-            <div class="meme-emoji">🗑️</div>
-            <h3>Bro never cleans up</h3>
-            <p>The sink is a crime scene. The trash is art. You've started eating outside every meal.</p>
-            <div class="meme-tag">Relatable 😭</div>
-          </div>
-          <div class="card-shine"></div>
-        </div>
-
-        <div class="meme-card reveal tilt-card" data-delay="100">
-          <div class="meme-card-inner">
-            <div class="meme-emoji">🏋️</div>
-            <h3>6AM gym freak</h3>
-            <p>BANG BANG BANG at 5:50AM. Pre-workout shaker heard across the building. Every. Single. Day.</p>
-            <div class="meme-tag">Send help 🆘</div>
-          </div>
-          <div class="card-shine"></div>
-        </div>
-
-        <div class="meme-card reveal tilt-card" data-delay="200">
-          <div class="meme-card-inner">
-            <div class="meme-emoji">🎉</div>
-            <h3>Randoms at 2AM</h3>
-            <p>You've met 47 of their "close friends." None of them know your name. Your bedroom is a walk-through.</p>
-            <div class="meme-tag">No sleep 😤</div>
-          </div>
-          <div class="card-shine"></div>
-        </div>
-
-        <div class="meme-card reveal tilt-card" data-delay="300">
-          <div class="meme-card-inner">
-            <div class="meme-emoji">😶</div>
-            <h3>Awkward silence all day</h3>
-            <p>You've memorized each other's schedules to avoid the living room at the same time. Peak avoidance arc.</p>
-            <div class="meme-tag">Main character 💀</div>
-          </div>
-          <div class="card-shine"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== HOW IT WORKS ========== -->
-  <section class="how-it-works" id="how-it-works">
-    <div class="container">
-      <div class="section-label reveal">Dead simple</div>
-      <h2 class="section-title reveal">How Roomr Works</h2>
-      <p class="section-sub reveal">Three steps between you and a drama-free living situation.</p>
-
-      <div class="steps-grid">
-        <div class="step-card reveal" data-delay="0">
-          <div class="step-connector"></div>
-          <div class="step-num-badge">01</div>
-          <div class="step-icon">⚙️</div>
-          <h3>Set Your Preferences</h3>
-          <p>Tell us your lifestyle + habits. Sleep schedule, cleanliness, guests, noise. We go deep.</p>
-        </div>
-
-        <div class="step-card reveal" data-delay="150">
-          <div class="step-connector"></div>
-          <div class="step-num-badge">02</div>
-          <div class="step-icon">🎯</div>
-          <h3>Get Matched Up</h3>
-          <p>Real people. Real compatibility. Our algorithm matches on personality, not just location and price.</p>
-        </div>
-
-        <div class="step-card reveal" data-delay="300">
-          <div class="step-num-badge">03</div>
-          <div class="step-icon">🏡</div>
-          <h3>Move In Stress-Free</h3>
-          <p>No weirdos. No chaos. Just a verified person you actually vibe with. Revolutionary, right?</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== TESTIMONIALS (NEW) ========== -->
-  <section class="testimonials" id="testimonials">
-    <div class="container">
-      <div class="section-label reveal">Real people, real tea ☕</div>
-      <h2 class="section-title reveal">
-        They found their person.<br />
-        <span class="gradient-text">No cap.</span>
-      </h2>
-
-      <div class="testi-grid">
-        <div class="testi-card reveal" data-delay="0">
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-          <p class="testi-quote">"Found my perfect roommate in 3 days. No red flags. No weird vibes. Honestly wild that this works."</p>
-          <div class="testi-author">
-            <span class="testi-avatar">👩‍💻</span>
-            <div>
-              <strong>Priya M.</strong>
-              <span>Mumbai → Bangalore</span>
-            </div>
-            <div class="testi-verified">✅ Verified</div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal testi-featured" data-delay="120">
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-          <p class="testi-quote">"Matched with someone who has the EXACT same sleep schedule and cleanliness standards as me. We're basically the same person. 10/10 no notes."</p>
-          <div class="testi-author">
-            <span class="testi-avatar">🧑‍🎨</span>
-            <div>
-              <strong>Arjun K.</strong>
-              <span>Chennai → Hyderabad</span>
-            </div>
-            <div class="testi-verified">✅ Verified</div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal" data-delay="240">
-          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-          <p class="testi-quote">"Used to dread coming home. Now I actually like my roommate??? Roomr did that. She's also obsessed with plants like me so it's unreal."</p>
-          <div class="testi-author">
-            <span class="testi-avatar">🧑‍🎓</span>
-            <div>
-              <strong>Meera S.</strong>
-              <span>Delhi → Pune</span>
-            </div>
-            <div class="testi-verified">✅ Verified</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== QUIZ CTA ========== -->
-  <section class="quiz-cta" id="quiz">
-    <div class="container">
-      <div class="quiz-box reveal">
-        <div class="quiz-bg-glow"></div>
-        <div class="quiz-content">
-          <span class="quiz-emoji">🏠</span>
-          <h2>What's your<br /><span class="gradient-text">roommate vibe?</span></h2>
-          <p>Answer a few questions about your lifestyle and we'll match you with someone who actually gets you. No awkward convos. No bad surprises.</p>
-          <a href="#waitlist" class="btn btn-primary btn-large magnetic">
-            <span>Find My Perfect Match</span>
-            <span class="btn-arrow">→</span>
-          </a>
-        </div>
-        <div class="quiz-badges">
-          <div class="quiz-badge">🔥 10 min quiz</div>
-          <div class="quiz-badge">✅ Science-backed</div>
-          <div class="quiz-badge">🆓 Free forever</div>
-          <div class="quiz-badge">🔒 100% private</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== ABOUT ========== -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text">
-          <div class="section-label reveal">What is Roomr?</div>
-          <h2 class="section-title reveal">
-            Built for the era of<br />
-            <span class="gradient-text">actually good roommates.</span>
-          </h2>
-          <p class="about-body reveal">
-            Roomr is the app that treats finding a roommate like finding a relationship - because honestly, it kind of is. You live with this person. You share a fridge. You need to be compatible.
-          </p>
-
-          <ul class="about-features">
-            <li class="about-feature reveal" data-delay="0">
-              <span class="feature-icon">🧠</span>
-              <div>
-                <strong>Personality-based matching</strong>
-                <p>Our compatibility quiz goes way beyond "are you clean or messy?" We map full lifestyle profiles.</p>
-              </div>
-            </li>
-            <li class="about-feature reveal" data-delay="100">
-              <span class="feature-icon">✅</span>
-              <div>
-                <strong>All users verified</strong>
-                <p>ID-checked, real people. No catfishes. No ghosts. No surprises on move-in day.</p>
-              </div>
-            </li>
-            <li class="about-feature reveal" data-delay="200">
-              <span class="feature-icon">🏠</span>
-              <div>
-                <strong>Find rental homes</strong>
-                <p>Browse listings, find places with your match, or bring your own rental and find a co-tenant.</p>
-              </div>
-            </li>
-            <li class="about-feature reveal" data-delay="300">
-              <span class="feature-icon">🔑</span>
-              <div>
-                <strong>Homeowners can list</strong>
-                <p>Got a spare room? List your property and get matched with the ideal tenant. No randos.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="about-visual reveal">
-          <div class="phone-mockup">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="app-header">
-                  <span>roomr</span>
-                  <span>🔔</span>
-                </div>
-                <div class="app-match">
-                  <span class="app-match-emoji">🎉</span>
-                  <p>New Match!</p>
-                  <small>Jordan, 24 - 96% compatible</small>
-                </div>
-                <div class="app-tags">
-                  <span>🌙 Night Owl</span>
-                  <span>📚 Student</span>
-                  <span>🧹 Very Clean</span>
-                </div>
-                <div class="app-actions">
-                  <button class="app-btn pass">✕ Pass</button>
-                  <button class="app-btn match ripple">❤️ Match</button>
-                </div>
-                <div class="app-nav">
-                  <span>🏠</span><span>🔍</span><span>💬</span><span>👤</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="stat-pill pill-1">
-            <span class="pill-num counter" data-target="98">0</span>%
-            <span>match rate</span>
-          </div>
-          <div class="stat-pill pill-2">
-            <span class="pill-num">🛡️</span>
-            <span>100% Verified</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== WAITLIST ========== -->
-  <section class="waitlist" id="waitlist">
-    <div class="container">
-      <div class="waitlist-inner">
-        <div class="waitlist-text">
-          <div class="section-label reveal">Limited spots 🔥</div>
-          <h2 class="section-title reveal">
-            Get early access.<br />
-            <span class="gradient-text">Skip the weirdos.</span>
-          </h2>
-          <p class="section-sub reveal">
-            Join the waitlist now. First 1,000 users get premium features free for life.
-          </p>
-
-          <div class="waitlist-perks reveal">
-            <div class="perk">⚡ Priority matching</div>
-            <div class="perk">🎁 Free premium tier</div>
-            <div class="perk">🎤 Founder office hours</div>
-            <div class="perk">🔒 Early bird pricing lock-in</div>
-          </div>
-
-          <!-- Progress bar showing spots taken -->
-          <div class="spots-left reveal">
-            <div class="spots-bar-wrap">
-              <div class="spots-bar">
-                <div class="spots-bar-fill" style="--fill: 72%"></div>
-              </div>
-              <span class="spots-label">720 of 1,000 spots claimed</span>
-            </div>
-          </div>
-        </div>
-
-        <form
-          class="waitlist-form reveal"
-          id="waitlistForm"
-          action="https://formspree.io/f/mwvwbaaw"
-          method="POST"
-          novalidate
-        >
-          <div class="form-group floating">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder=" "
-              required
-              autocomplete="off"
-            />
-            <label for="name">Your Name</label>
-            <span class="field-error" id="nameError"></span>
-          </div>
-
-          <div class="form-group floating">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder=" "
-              required
-              autocomplete="off"
-            />
-            <label for="email">Email Address</label>
-            <span class="field-error" id="emailError"></span>
-          </div>
-
-          <div class="form-group floating">
-            <textarea
-              id="message"
-              name="message"
-              rows="3"
-              placeholder=" "
-              maxlength="300"
-            ></textarea>
-            <label for="message">Roommate horror story? <span class="optional">(optional)</span></label>
-            <span class="char-count" id="charCount">0 / 300</span>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-full magnetic ripple" id="submitBtn">
-            <span class="btn-text">Join the Waitlist 🚀</span>
-            <span class="btn-loading" style="display:none">Sending... ✈️</span>
-          </button>
-
-          <div class="form-success" id="formSuccess" style="display:none">
-            <span class="success-icon">🎉</span>
-            <h3>You're on the list!</h3>
-            <p>We'll hit you up when Roomr launches. Stay weird. Stay clean. Stay you. ✌️</p>
-          </div>
-
-          <div class="form-error-msg" id="formErrorMsg" style="display:none">
-            <span>😅 Something went wrong. Try again in a sec!</span>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <span class="footer-logo">roomr<span class="footer-logo-dot">.</span></span>
-          <p>Find a roommate who actually fits your vibe. Not just whoever replied first.</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Twitter" class="social-link">𝕏</a>
-            <a href="#" aria-label="Instagram" class="social-link">📸</a>
-            <a href="#" aria-label="TikTok" class="social-link">🎵</a>
-          </div>
-        </div>
-
-        <div class="footer-links">
-          <div class="footer-col">
-            <h4>Product</h4>
-            <ul>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#quiz">Vibe Test</a></li>
-              <li><a href="#waitlist">Join Waitlist</a></li>
+            <ul class="nav-links" id="navLinks" role="navigation">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#waitlist">Join Waitlist</a></li>
             </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">FAQ</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Terms</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Cookies</a></li>
-            </ul>
-          </div>
+
+            <div class="nav-actions">
+                <label class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <input type="checkbox" id="themeToggle" />
+                    <span class="toggle-track">
+                        <span class="toggle-thumb">
+                            <span class="toggle-icon moon">🌙</span>
+                            <span class="toggle-icon sun">☀️</span>
+                        </span>
+                    </span>
+                </label>
+                <a href="#waitlist" class="btn btn-nav magnetic">
+                    <span>Get Early Access</span>
+                    <span class="btn-arrow">↗</span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
-      </div>
+    </nav>
 
-      <div class="footer-bottom">
-        <span>© 2026 Roomr. All rights reserved.</span>
-        <span class="footer-made">Made with 🔥 for people who deserve better roommates.</span>
-      </div>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="mesh-blob blob-1"></div>
+            <div class="mesh-blob blob-2"></div>
+            <div class="mesh-blob blob-3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge reveal">
+                <span class="badge-dot"></span>
+                Now in beta · 2,400+ on waitlist
+            </div>
+
+            <h1 class="hero-headline reveal">
+                Stop living<br />
+                <span class="gradient-text" data-text="with randoms.">with randoms.</span>
+            </h1>
+
+            <p class="hero-sub reveal">
+                Find a roommate who actually fits your vibe.<br />
+                <em>Not just whoever replied first.</em>
+            </p>
+
+            <div class="hero-ctas reveal">
+                <a href="#waitlist" class="btn btn-primary btn-large magnetic">
+                    <span>Find My Roommate</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a href="#quiz" class="btn btn-ghost magnetic">
+                    <span>Take the Vibe Test</span>
+                    <span>✨</span>
+                </a>
+            </div>
+
+            <div class="social-proof reveal">
+                <div class="proof-avatars">
+                    <span class="avatar">😊</span>
+                    <span class="avatar">🧑‍💻</span>
+                    <span class="avatar">👩‍🎨</span>
+                    <span class="avatar">🧑‍🎓</span>
+                    <span class="avatar">🧑‍🍳</span>
+                </div>
+                <span class="proof-text">2,400+ people already on the waitlist 🔥</span>
+            </div>
+        </div>
+
+        <div class="hero-visual reveal">
+            <!-- Main match card -->
+            <div class="match-card">
+                <div class="match-card-glow"></div>
+                <div class="match-card-inner">
+                    <div class="match-header">
+                        <span class="match-avatar">👤</span>
+                        <div>
+                            <p class="match-name">Alex, 23</p>
+                            <p class="match-detail">Night owl · Clean freak · WFH</p>
+                        </div>
+                        <span class="match-pct">98%</span>
+                    </div>
+                    <div class="match-tags">
+                        <span class="tag">🌙 Night Owl</span>
+                        <span class="tag">🧹 Clean</span>
+                        <span class="tag">🎮 Gamer</span>
+                        <span class="tag">🤫 Quiet</span>
+                    </div>
+                    <div class="match-bar">
+                        <span class="bar-label">Compatibility Score</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="--pct:98%"></div>
+                        </div>
+                    </div>
+                    <button class="match-btn ripple">Connect 🤝</button>
+                </div>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="activity-feed reveal">
+                <div class="activity-header">
+                    <span class="activity-dot"></span>
+                    <span>Live activity</span>
+                </div>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-item active">😊 Ananya just joined from Delhi</div>
+                    <div class="activity-item">🎯 New match: 97% compatible</div>
+                    <div class="activity-item">✅ Rohan verified his profile</div>
+                </div>
+            </div>
+
+            <div class="hero-badge-float badge-float-1">✅ Verified</div>
+            <div class="hero-badge-float badge-float-2">🏆 Top Match</div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ========== MARQUEE TICKER ========== -->
+    <div class="marquee-section" aria-hidden="true">
+        <div class="marquee-track marquee-left">
+            <div class="marquee-inner">
+                <span class="m-tag">🌙 Night Owl</span>
+                <span class="m-tag">🧹 Clean AF</span>
+                <span class="m-tag">🤫 Quiet Hours</span>
+                <span class="m-tag">🎮 Gamer</span>
+                <span class="m-tag">📚 Always Studying</span>
+                <span class="m-tag">🏋️ Gym Rat</span>
+                <span class="m-tag">🌿 Plant Parent</span>
+                <span class="m-tag">🐱 Pet Friendly</span>
+                <span class="m-tag">🍳 Home Chef</span>
+                <span class="m-tag">🎵 Audiophile</span>
+                <span class="m-tag">☀️ Early Riser</span>
+                <span class="m-tag">💼 WFH Gang</span>
+                <span class="m-tag">🌙 Night Owl</span>
+                <span class="m-tag">🧹 Clean AF</span>
+                <span class="m-tag">🤫 Quiet Hours</span>
+                <span class="m-tag">🎮 Gamer</span>
+                <span class="m-tag">📚 Always Studying</span>
+                <span class="m-tag">🏋️ Gym Rat</span>
+                <span class="m-tag">🌿 Plant Parent</span>
+                <span class="m-tag">🐱 Pet Friendly</span>
+                <span class="m-tag">🍳 Home Chef</span>
+                <span class="m-tag">🎵 Audiophile</span>
+                <span class="m-tag">☀️ Early Riser</span>
+                <span class="m-tag">💼 WFH Gang</span>
+            </div>
+        </div>
+        <div class="marquee-track marquee-right">
+            <div class="marquee-inner">
+                <span class="m-tag accent">No Parties After 10</span>
+                <span class="m-tag accent">Split Groceries 50/50</span>
+                <span class="m-tag accent">No Smoking Inside</span>
+                <span class="m-tag accent">Guest Policy Agreed</span>
+                <span class="m-tag accent">Netflix Password Sharing OK</span>
+                <span class="m-tag accent">AC at 23°C only fr</span>
+                <span class="m-tag accent">Dishes Same Day</span>
+                <span class="m-tag accent">Quiet After 11PM</span>
+                <span class="m-tag accent">No Parties After 10</span>
+                <span class="m-tag accent">Split Groceries 50/50</span>
+                <span class="m-tag accent">No Smoking Inside</span>
+                <span class="m-tag accent">Guest Policy Agreed</span>
+                <span class="m-tag accent">Netflix Password Sharing OK</span>
+                <span class="m-tag accent">AC at 23°C only fr</span>
+                <span class="m-tag accent">Dishes Same Day</span>
+                <span class="m-tag accent">Quiet After 11PM</span>
+            </div>
+        </div>
     </div>
-  </footer>
 
-  <script src="index.js"></script>
+    <!-- ========== STATS STRIP ========== -->
+    <section class="stats-strip">
+        <div class="container">
+            <div class="stats-grid">
+
+                <div class="stat-block reveal">
+                    <span class="stat-number">10<span class="stat-unit">min</span></span>
+                    <span class="stat-label">Vibe Questions. No fluff.</span>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-block reveal" data-delay="100">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Personality-first matching</span>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-block reveal" data-delay="200">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Weirdos. Absolute zero.</span>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-block reveal" data-delay="300">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Better than your last roommate</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MEME SECTION ========== -->
+    <section class="memes" id="memes">
+        <div class="container">
+            <div class="section-label reveal">The struggle is real 😭</div>
+            <h2 class="section-title reveal">
+                Roommate Nightmares<br />
+                <span class="gradient-text">We've All Lived Through</span>
+            </h2>
+            <p class="section-sub reveal">Sound familiar? Yeah. We built Roomr because of this.</p>
+
+            <div class="meme-grid">
+                <div class="meme-card reveal tilt-card" data-delay="0">
+                    <div class="meme-card-inner">
+                        <div class="meme-emoji">🗑️</div>
+                        <h3>Bro never cleans up</h3>
+                        <p>The sink is a crime scene. The trash is art. You've started eating outside every meal.</p>
+                        <div class="meme-tag">Relatable 😭</div>
+                    </div>
+                    <div class="card-shine"></div>
+                </div>
+
+                <div class="meme-card reveal tilt-card" data-delay="100">
+                    <div class="meme-card-inner">
+                        <div class="meme-emoji">🏋️</div>
+                        <h3>6AM gym freak</h3>
+                        <p>BANG BANG BANG at 5:50AM. Pre-workout shaker heard across the building. Every. Single. Day.
+                        </p>
+                        <div class="meme-tag">Send help 🆘</div>
+                    </div>
+                    <div class="card-shine"></div>
+                </div>
+
+                <div class="meme-card reveal tilt-card" data-delay="200">
+                    <div class="meme-card-inner">
+                        <div class="meme-emoji">🎉</div>
+                        <h3>Randoms at 2AM</h3>
+                        <p>You've met 47 of their "close friends." None of them know your name. Your bedroom is a
+                            walk-through.</p>
+                        <div class="meme-tag">No sleep 😤</div>
+                    </div>
+                    <div class="card-shine"></div>
+                </div>
+
+                <div class="meme-card reveal tilt-card" data-delay="300">
+                    <div class="meme-card-inner">
+                        <div class="meme-emoji">😶</div>
+                        <h3>Awkward silence all day</h3>
+                        <p>You've memorized each other's schedules to avoid the living room at the same time. Peak
+                            avoidance arc.</p>
+                        <div class="meme-tag">Main character 💀</div>
+                    </div>
+                    <div class="card-shine"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-label reveal">Dead simple</div>
+            <h2 class="section-title reveal">How Roomr Works</h2>
+            <p class="section-sub reveal">Three steps between you and a drama-free living situation.</p>
+
+            <div class="steps-grid">
+                <div class="step-card reveal" data-delay="0">
+                    <div class="step-connector"></div>
+                    <div class="step-num-badge">01</div>
+                    <div class="step-icon">⚙️</div>
+                    <h3>Set Your Preferences</h3>
+                    <p>Tell us your lifestyle + habits. Sleep schedule, cleanliness, guests, noise. We go deep.</p>
+                </div>
+
+                <div class="step-card reveal" data-delay="150">
+                    <div class="step-connector"></div>
+                    <div class="step-num-badge">02</div>
+                    <div class="step-icon">🎯</div>
+                    <h3>Get Matched Up</h3>
+                    <p>Real people. Real compatibility. Our algorithm matches on personality, not just location and
+                        price.</p>
+                </div>
+
+                <div class="step-card reveal" data-delay="300">
+                    <div class="step-num-badge">03</div>
+                    <div class="step-icon">🏡</div>
+                    <h3>Move In Stress-Free</h3>
+                    <p>No weirdos. No chaos. Just a verified person you actually vibe with. Revolutionary, right?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-label reveal">Real people, real tea ☕</div>
+            <h2 class="section-title reveal">
+                They found their person.<br />
+                <span class="gradient-text">No cap.</span>
+            </h2>
+
+            <div class="testi-grid">
+                <div class="testi-card reveal" data-delay="0">
+                    <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testi-quote">"Found my perfect roommate in 3 days. No red flags. No weird vibes. Honestly
+                        wild that this works."</p>
+                    <div class="testi-author">
+                        <span class="testi-avatar">👩‍💻</span>
+                        <div>
+                            <strong>Priya M.</strong>
+                            <span>Mumbai → Bangalore</span>
+                        </div>
+                        <div class="testi-verified">✅ Verified</div>
+                    </div>
+                </div>
+
+                <div class="testi-card reveal testi-featured" data-delay="120">
+                    <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testi-quote">"Matched with someone who has the EXACT same sleep schedule and cleanliness
+                        standards as me. We're basically the same person. 10/10 no notes."</p>
+                    <div class="testi-author">
+                        <span class="testi-avatar">🧑‍🎨</span>
+                        <div>
+                            <strong>Arjun K.</strong>
+                            <span>Chennai → Hyderabad</span>
+                        </div>
+                        <div class="testi-verified">✅ Verified</div>
+                    </div>
+                </div>
+
+                <div class="testi-card reveal" data-delay="240">
+                    <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testi-quote">"Used to dread coming home. Now I actually like my roommate??? Roomr did
+                        that. She's also obsessed with plants like me so it's unreal."</p>
+                    <div class="testi-author">
+                        <span class="testi-avatar">🧑‍🎓</span>
+                        <div>
+                            <strong>Meera S.</strong>
+                            <span>Delhi → Pune</span>
+                        </div>
+                        <div class="testi-verified">✅ Verified</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== QUIZ CTA ========== -->
+    <section class="quiz-cta" id="quiz">
+        <div class="container">
+            <div class="quiz-box reveal">
+                <div class="quiz-bg-glow"></div>
+                <div class="quiz-content">
+                    <span class="quiz-emoji">🏠</span>
+                    <h2>What's your<br /><span class="gradient-text">roommate vibe?</span></h2>
+                    <p>Answer a few questions about your lifestyle and we'll match you with someone who actually gets
+                        you. No awkward convos. No bad surprises.</p>
+                    <a href="#waitlist" class="btn btn-primary btn-large magnetic">
+                        <span>Find My Perfect Match</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+                <div class="quiz-badges">
+                    <div class="quiz-badge">🔥 10 min quiz</div>
+                    <div class="quiz-badge">✅ Science-backed</div>
+                    <div class="quiz-badge">🆓 Free forever</div>
+                    <div class="quiz-badge">🔒 100% private</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="section-label reveal">What is Roomr?</div>
+                    <h2 class="section-title reveal">
+                        Built for the era of<br />
+                        <span class="gradient-text">actually good roommates.</span>
+                    </h2>
+                    <p class="about-body reveal">
+                        Roomr is the app that treats finding a roommate like finding a relationship - because honestly,
+                        it kind of is. You live with this person. You share a fridge. You need to be compatible.
+                    </p>
+
+                    <ul class="about-features">
+                        <li class="about-feature reveal" data-delay="0">
+                            <span class="feature-icon">🧠</span>
+                            <div>
+                                <strong>Personality-based matching</strong>
+                                <p>Our compatibility quiz goes way beyond "are you clean or messy?" We map full
+                                    lifestyle profiles.</p>
+                            </div>
+                        </li>
+                        <li class="about-feature reveal" data-delay="100">
+                            <span class="feature-icon">✅</span>
+                            <div>
+                                <strong>All users verified</strong>
+                                <p>ID-checked, real people. No catfishes. No ghosts. No surprises on move-in day.</p>
+                            </div>
+                        </li>
+                        <li class="about-feature reveal" data-delay="200">
+                            <span class="feature-icon">🏠</span>
+                            <div>
+                                <strong>Find rental homes</strong>
+                                <p>Browse listings, find places with your match, or bring your own rental and find a
+                                    co-tenant.</p>
+                            </div>
+                        </li>
+                        <li class="about-feature reveal" data-delay="300">
+                            <span class="feature-icon">🔑</span>
+                            <div>
+                                <strong>Homeowners can list</strong>
+                                <p>Got a spare room? List your property and get matched with the ideal tenant. No
+                                    randos.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="about-visual reveal">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="app-header">
+                                    <span>roomr</span>
+                                    <span>🔔</span>
+                                </div>
+                                <div class="app-match">
+                                    <span class="app-match-emoji">🎉</span>
+                                    <p>New Match!</p>
+                                    <small>Jordan, 24 - 96% compatible</small>
+                                </div>
+                                <div class="app-tags">
+                                    <span>🌙 Night Owl</span>
+                                    <span>📚 Student</span>
+                                    <span>🧹 Very Clean</span>
+                                </div>
+                                <div class="app-actions">
+                                    <button class="app-btn pass">✕ Pass</button>
+                                    <button class="app-btn match ripple">❤️ Match</button>
+                                </div>
+                                <div class="app-nav">
+                                    <span>🏠</span><span>🔍</span><span>💬</span><span>👤</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-pill pill-1">
+                        <span class="pill-num counter" data-target="98">0</span>%
+                        <span>match rate</span>
+                    </div>
+                    <div class="stat-pill pill-2">
+                        <span class="pill-num">🛡️</span>
+                        <span>100% Verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WAITLIST ========== -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <div class="waitlist-inner">
+                <div class="waitlist-text">
+                    <div class="section-label reveal">Limited spots 🔥</div>
+                    <h2 class="section-title reveal">
+                        Get early access.<br />
+                        <span class="gradient-text">Skip the weirdos.</span>
+                    </h2>
+                    <p class="section-sub reveal">
+                        Join the waitlist now. First 1,000 users get premium features free for life.
+                    </p>
+
+                    <div class="waitlist-perks reveal">
+                        <div class="perk">⚡ Priority matching</div>
+                        <div class="perk">🎁 Free premium tier</div>
+                        <div class="perk">🎤 Founder office hours</div>
+                        <div class="perk">🔒 Early bird pricing lock-in</div>
+                    </div>
+
+                    <div class="spots-left reveal">
+                        <div class="spots-bar-wrap">
+                            <div class="spots-bar">
+                                <div class="spots-bar-fill" style="--fill: 72%"></div>
+                            </div>
+                            <span class="spots-label">720 of 1,000 spots claimed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="waitlist-form reveal" id="waitlistForm" action="https://formspree.io/f/mwvwbaaw"
+                    method="POST" novalidate>
+                    <div class="form-group floating">
+                        <input type="text" id="name" name="name" placeholder=" " required autocomplete="off" />
+                        <label for="name">Your Name</label>
+                        <span class="field-error" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group floating">
+                        <input type="email" id="email" name="email" placeholder=" " required autocomplete="off" />
+                        <label for="email">Email Address</label>
+                        <span class="field-error" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group floating">
+                        <textarea id="message" name="message" rows="3" placeholder=" " maxlength="300"></textarea>
+                        <label for="message">Roommate horror story? <span class="optional">(optional)</span></label>
+                        <span class="char-count" id="charCount">0 / 300</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full magnetic ripple" id="submitBtn">
+                        <span class="btn-text">Join the Waitlist 🚀</span>
+                        <span class="btn-loading" style="display:none">Sending... ✈️</span>
+                    </button>
+
+                    <div class="form-success" id="formSuccess" style="display:none">
+                        <span class="success-icon">🎉</span>
+                        <h3>You're on the list!</h3>
+                        <p>We'll hit you up when Roomr launches. Stay weird. Stay clean. Stay you. ✌️</p>
+                    </div>
+
+                    <div class="form-error-msg" id="formErrorMsg" style="display:none">
+                        <span>😅 Something went wrong. Try again in a sec!</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+
+                    <!-- UPDATED FOOTER LOGO: same R + logo.png + MR pattern -->
+                    <a href="#" class="footer-logo-link" aria-label="Roomr home">
+                        <span class="footer-logo">
+                            <span class="footer-logo-letter">R</span>
+                            <img src="logo.png" class="footer-logo-img" alt="" aria-hidden="true" />
+                            <span class="footer-logo-letter">MR</span>
+                            <span class="footer-logo-dot">.</span>
+                        </span>
+                    </a>
+
+                    <p>Find a roommate who actually fits your vibe. Not just whoever replied first.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Twitter" class="social-link">𝕏</a>
+                        <a href="#" aria-label="Instagram" class="social-link">📸</a>
+                        <a href="#" aria-label="TikTok" class="social-link">🎵</a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#quiz">Vibe Test</a></li>
+                            <li><a href="#waitlist">Join Waitlist</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Roomr. All rights reserved.</span>
+                <span class="footer-made">Made with 🔥 for people who deserve better roommates.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
 </body>
+
 </html>
