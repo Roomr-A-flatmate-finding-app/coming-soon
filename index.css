@@ -447,7 +447,7 @@ body.cursor-hover .cursor-trail {
 
 /* Light mode: letters use brand orange so they stay legible on light bg */
 [data-theme="light"] .logo-letter {
-  color: var(--orange);
+  color: var(--black);
   text-shadow: none;
 }
 
@@ -2383,4 +2383,9 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+.image-avatar{
+  width: 32px; height: 32px;
+  border-radius: 50% !important;
+  object-fit: cover;
 }

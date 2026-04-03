@@ -1,0 +1,49 @@
+/* ============================================================
+   ROOMR — splash.css
+   NEW FILE — no existing code modified.
+   Import this in index.html BEFORE index.css:
+     <link rel="stylesheet" href="splash.css" />
+     <link rel="stylesheet" href="index.css" />
+   ============================================================ */
+
+/* ── Splash overlay ── */
+ 
+#splashScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #080808;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+ 
+/* Exit keyframe — also defined inline in splash.js as a fallback */
+@keyframes splashFadeOut {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.035); }
+}
+ 
+
+#splashCanvas {
+  display: block;
+  /* canvas sized dynamically by JS */
+}
+
+/* ── Fade-out transition when splash exits ── */
+#splashScreen.splash-exit {
+  animation: splashFadeOut 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* @keyframes splashFadeOut {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.04); }
+} */
+
+/* ── Hide main content until splash is done (prevents flicker) ── */
+body.splash-active {
+  overflow: hidden;
+}

@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roomr - Find Your Vibe, Find Your Roommate</title>
+    <title>Roomr - Find Your Tribe</title>
     <meta name="description" content="Stop living with randoms. Find a roommate who actually fits your vibe." />
     <!-- Google Fonts removed — Manrope loaded locally via @font-face in index.css -->
+    <!-- ★ NEW: Splash screen styles (must come before index.css) -->
+    <link rel="stylesheet" href="splash.css" />
     <link rel="stylesheet" href="index.css" />
 </head>
 
@@ -43,9 +45,9 @@
 
             <!-- UPDATED LOGO: R + logo.png (replaces "oo") + MR + dot -->
             <a href="#" class="nav-logo" aria-label="Roomr home">
-                <span class="logo-letter">R</span>
+                <span class="logo-letter">r</span>
                 <img src="logo.png" class="logo-img" alt="" aria-hidden="true" />
-                <span class="logo-letter">MR</span>
+                <span class="logo-letter">mrr</span>
                 <span class="logo-dot">.</span>
             </a>
 
@@ -371,7 +373,7 @@
                     <p class="testi-quote">"Found my perfect roommate in 3 days. No red flags. No weird vibes. Honestly
                         wild that this works."</p>
                     <div class="testi-author">
-                        <span class="testi-avatar">👩‍💻</span>
+                        <span class="testi-avatar"><img src="priya.jpeg" alt="" class="image-avatar"></span>
                         <div>
                             <strong>Priya M.</strong>
                             <span>Mumbai → Bangalore</span>
@@ -385,7 +387,7 @@
                     <p class="testi-quote">"Matched with someone who has the EXACT same sleep schedule and cleanliness
                         standards as me. We're basically the same person. 10/10 no notes."</p>
                     <div class="testi-author">
-                        <span class="testi-avatar">🧑‍🎨</span>
+                        <span class="testi-avatar"><img src="arjun.jpeg" alt="" class="image-avatar"></span>
                         <div>
                             <strong>Arjun K.</strong>
                             <span>Chennai → Hyderabad</span>
@@ -399,7 +401,7 @@
                     <p class="testi-quote">"Used to dread coming home. Now I actually like my roommate??? Roomr did
                         that. She's also obsessed with plants like me so it's unreal."</p>
                     <div class="testi-author">
-                        <span class="testi-avatar">🧑‍🎓</span>
+                        <span class="testi-avatar"><img src="meera.jpeg" alt="" class="image-avatar"></span>
                         <div>
                             <strong>Meera S.</strong>
                             <span>Delhi → Pune</span>
@@ -607,9 +609,9 @@
                     <!-- UPDATED FOOTER LOGO: same R + logo.png + MR pattern -->
                     <a href="#" class="footer-logo-link" aria-label="Roomr home">
                         <span class="footer-logo">
-                            <span class="footer-logo-letter">R</span>
+                            <span class="footer-logo-letter">r</span>
                             <img src="logo.png" class="footer-logo-img" alt="" aria-hidden="true" />
-                            <span class="footer-logo-letter">MR</span>
+                            <span class="footer-logo-letter">mrr</span>
                             <span class="footer-logo-dot">.</span>
                         </span>
                     </a>
@@ -657,6 +659,8 @@
         </div>
     </footer>
 
+    <!-- ★ NEW: Splash screen logic (must load before index.js) -->
+    <script src="splash.js"></script>
     <script src="index.js"></script>
 </body>
 
