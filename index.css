@@ -222,7 +222,7 @@ body.cursor-hover .cursor-trail { width: 52px; height: 52px; border-color: var(-
 .footer-logo-link { display: inline-block; text-decoration: none; margin-bottom: 12px; }
 .footer-logo { display: inline-flex; align-items: center; gap: 0; line-height: 1; }
 .footer-logo-letter { font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; letter-spacing: -0.05em; color: #ffffff;  text-shadow: 0 1px 4px rgba(0,0,0,0.35); }
-[data-theme="light"] .footer-logo-letter { color: var(--orange); text-shadow: none; }
+[data-theme="light"] .footer-logo-letter { color: var(--black); text-shadow: none; }
 .footer-logo-img { height: 1.5rem; width: auto; display: block; object-fit: contain; margin-top: -1px; margin-left: 3px; margin-right: 3px; }
 .footer-logo-dot { background: var(--grad-brand-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; line-height: 1; margin-left: 1px; }
 
