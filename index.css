@@ -768,7 +768,7 @@ input:checked ~ .toggle-track .toggle-icon.sun  { opacity: 1; transform: scale(1
   .section-sub { margin-bottom: 2rem; }
   .match-card { width: min(310px, 90vw); }
   .activity-feed { width: min(310px, 90vw); }
-  .phone-frame { max-width: 240px; border-radius: 24px; padding: 12px; }
+  .phone-frame { max-width: 300px; border-radius: 24px; padding: 12px; }
   .quiz-box { padding: 32px 16px 24px; }
   .footer-top { gap: 1.5rem; }
   .footer-brand p { max-width: 100%; }
