@@ -4,22 +4,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roomr - Find Your Tribe</title>
+    <title>Roomrr - Find Your Tribe</title>
+    <link rel="icon" type="image/png" href="title-logo.png" />
     <meta name="description" content="Stop living with randoms. Find a roommate who actually fits your vibe." />
     <link rel="stylesheet" href="splash.css" />
     <link rel="stylesheet" href="index.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KEKWNX9H4T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KEKWNX9H4T');
+    </script>
 </head>
 
 <body>
-
     <div class="noise-overlay" aria-hidden="true"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
-
     <div class="cursor" id="cursor">
         <div class="cursor-dot"></div>
     </div>
     <div class="cursor-trail" id="cursorTrail"></div>
-
     <div class="floating-stickers" aria-hidden="true">
         <span class="sticker s1">🏠</span>
         <span class="sticker s2">✨</span>
@@ -28,14 +34,13 @@
         <span class="sticker s5">💥</span>
         <span class="sticker s6">🔥</span>
     </div>
-
     <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-logo" aria-label="Roomr home">
-                <span class="logo-letter"  style="margin-right:2px;margin-bottom:4px">r</span>
+                <span class="logo-letter" style="margin-right:2px;margin-bottom:4px">r</span>
                 <img src="logo.png" class="logo-img" alt="" aria-hidden="true" />
                 <span class="logo-letter">mrr</span>
             </a>
@@ -113,9 +118,10 @@
                 <div class="match-card-glow"></div>
                 <div class="match-card-inner">
                     <div class="match-header">
-                        <span class="match-avatar">👤</span>
+                        <span class="match-avatar"><img style="border-radius: 50%; height: 50px; width: 50px;"
+                                src="shreeja.jpeg" alt=""></span>
                         <div>
-                            <p class="match-name">Alex, 23</p>
+                            <p class="match-name">Shreeja, 23</p>
                             <p class="match-detail">Night owl · Clean freak · WFH</p>
                         </div>
                         <span class="match-pct">98%</span>
@@ -257,7 +263,8 @@
                     <div class="meme-card-inner">
                         <div class="meme-emoji">🏋️</div>
                         <h3>6AM gym freak</h3>
-                        <p>BANG BANG BANG at 5:50AM. Pre-workout shaker heard across the building. Every. Single. Day.</p>
+                        <p>BANG BANG BANG at 5:50AM. Pre-workout shaker heard across the building. Every. Single. Day.
+                        </p>
                         <div class="meme-tag">Send help 🆘</div>
                     </div>
                     <div class="card-shine"></div>
@@ -266,7 +273,8 @@
                     <div class="meme-card-inner">
                         <div class="meme-emoji">🎉</div>
                         <h3>Randoms at 2AM</h3>
-                        <p>You've met 47 of their "close friends." None of them know your name. Your bedroom is a walk-through.</p>
+                        <p>You've met 47 of their "close friends." None of them know your name. Your bedroom is a
+                            walk-through.</p>
                         <div class="meme-tag">No sleep 😤</div>
                     </div>
                     <div class="card-shine"></div>
@@ -275,7 +283,8 @@
                     <div class="meme-card-inner">
                         <div class="meme-emoji">😶</div>
                         <h3>Awkward silence all day</h3>
-                        <p>You've memorized each other's schedules to avoid the living room at the same time. Peak avoidance arc.</p>
+                        <p>You've memorized each other's schedules to avoid the living room at the same time. Peak
+                            avoidance arc.</p>
                         <div class="meme-tag">Main character 💀</div>
                     </div>
                     <div class="card-shine"></div>
@@ -303,7 +312,8 @@
                     <div class="step-num-badge">02</div>
                     <div class="step-icon">🎯</div>
                     <h3>Get Matched Up</h3>
-                    <p>Real people. Real compatibility. Our algorithm matches on personality, not just location and price.</p>
+                    <p>Real people. Real compatibility. Our algorithm matches on personality, not just location and
+                        price.</p>
                 </div>
                 <div class="step-card reveal" data-delay="300">
                     <div class="step-num-badge">03</div>
@@ -323,123 +333,102 @@
                 They found their person.<br />
                 <span class="gradient-text">No cap.</span>
             </h2>
-
             <div class="testi-carousel-wrapper reveal">
-
-                <!-- Prev button -->
-                <button style="margin-left:-100px" class="testi-arrow testi-prev" id="testiPrev" aria-label="Previous testimonial">
+                <button style="margin-left:-100px" class="testi-arrow testi-prev" id="testiPrev"
+                    aria-label="Previous testimonial">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 15L7 10L12 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 15L7 10L12 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                            stroke-linejoin="round" />
                     </svg>
                 </button>
-
-                <!-- Scrollable track -->
-                <div style="margin-left:-100px;margin-right:-100px"  class="testi-track" id="testiTrack">
-
-                    <!-- 1 — Priya -->
+                <div style="margin-left:-100px;margin-right:-100px" class="testi-track" id="testiTrack">
+                    <!-- Sneha -->
                     <article class="testi-card">
                         <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testi-quote">"Found my perfect roommate in 3 days. No red flags. No weird vibes. Honestly wild that this works. Truly amazed by this experience!"</p>
+                        <p class="testi-quote">"Found my perfect roommate in 3 days. No red flags. No weird vibes.
+                            Honestly wild that this works. Truly amazed by this experience!"</p>
                         <div class="testi-author">
-                            <div class="testi-avatar"><img src="sneha.jpeg" alt="Priya M." /></div>
+                            <div class="testi-avatar"><img src="sneha.jpeg" alt="Sneha R." /></div>
                             <div class="testi-info"><strong>Sneha R.</strong><span>Mumbai → Bangalore</span></div>
                             <div class="testi-badge">✅ Verified</div>
                         </div>
                     </article>
-
-                   
-
-                    <!-- 5 — Shana -->
+                    <!-- Shana -->
                     <article class="testi-card testi-featured">
                         <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testi-quote">"Matched with someone who sleeps at the same time as me, hates dishes in the sink, and actually replies to messages. I didn't know roommates like this existed."</p>
+                        <p class="testi-quote">"Matched with someone who sleeps at the same time as me, hates dishes in
+                            the sink, and actually replies to messages. I didn't know roommates like this existed."</p>
                         <div class="testi-author">
                             <div class="testi-avatar"><img src="shana.jpeg" alt="Shana K." /></div>
                             <div class="testi-info"><strong>Shana K.</strong><span>Kolkata → Mumbai</span></div>
                             <div class="testi-badge">✅ Verified</div>
                         </div>
                     </article>
-
-                    <!-- 6 — Greg -->
+                    <!-- Greg -->
                     <article class="testi-card">
                         <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testi-quote">"As someone relocating for a job, I had zero time to vet randoms. Roomr did the heavy lifting — found a verified, normal human being in under a week. 10/10."</p>
+                        <p class="testi-quote">"As someone relocating for a job, I had zero time to vet randoms. Roomr
+                            did the heavy lifting — found a verified, normal human being in under a week. 10/10."</p>
                         <div class="testi-author">
                             <div class="testi-avatar"><img src="greg.jpeg" alt="Greg M." /></div>
                             <div class="testi-info"><strong>Greg M.</strong><span>Delhi → Gurgaon</span></div>
                             <div class="testi-badge">✅ Verified</div>
                         </div>
                     </article>
-
-                    <!-- 7 — Aditya -->
+                    <!-- Aditya -->
                     <article class="testi-card">
                         <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testi-quote">"My previous roommate was an actual menace. Roomr matched me with a fellow night-owl WFH guy who respects quiet hours. We co-exist in absolute peace."</p>
+                        <p class="testi-quote">"My previous roommate was an actual menace. Roomr matched me with a
+                            fellow night-owl WFH guy who respects quiet hours. We co-exist in absolute peace."</p>
                         <div class="testi-author">
                             <div class="testi-avatar"><img src="aditya.jpeg" alt="Aditya S." /></div>
                             <div class="testi-info"><strong>Aditya S.</strong><span>Chennai → Bangalore</span></div>
                             <div class="testi-badge">✅ Verified</div>
                         </div>
                     </article>
-
-                    <!-- 8 — Chetan -->
+                    <!-- Chetan -->
                     <article class="testi-card testi-featured">
                         <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testi-quote">"The compatibility quiz caught things I didn't think to mention — like the AC being 23°C. My roommate and I set it to that every time. Zero arguments."</p>
+                        <p class="testi-quote">"The compatibility quiz caught things I didn't think to mention — like
+                            the AC being 23°C. My roommate and I set it to that every time. Zero arguments."</p>
                         <div class="testi-author">
                             <div class="testi-avatar"><img src="chetan.jpeg" alt="Chetan P." /></div>
                             <div class="testi-info"><strong>Chetan P.</strong><span>Kolkata → Hyderabad</span></div>
                             <div class="testi-badge">✅ Verified</div>
                         </div>
                     </article>
-
-                    <!-- 9 — Vaishnavi -->
+                    <!-- Vaishnavi -->
                     <article class="testi-card">
                         <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testi-quote">"I used to dread coming home. Now I actually like my roommate? She's also obsessed with plants like me. Roomr really understood the assignment fr fr."</p>
+                        <p class="testi-quote">"I used to dread coming home. Now I actually like my roommate? She's also
+                            obsessed with plants like me. Roomr really understood the assignment fr fr."</p>
                         <div class="testi-author">
                             <div class="testi-avatar"><img src="vaishnavi.jpeg" alt="Vaishnavi N." /></div>
                             <div class="testi-info"><strong>Vaishnavi N.</strong><span>Nagpur → Pune</span></div>
                             <div class="testi-badge">✅ Verified</div>
                         </div>
                     </article>
-
-                    <!-- 10 — Shreeja -->
-                    <article class="testi-card">
-                        <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testi-quote">"Honestly thought this would be another scammy app. But verification is real, matching is smart, and my roommate is an actual legend. No notes whatsoever."</p>
-                        <div class="testi-author">
-                            <div class="testi-avatar"><img src="shreeja.jpeg" alt="Shreeja V." /></div>
-                            <div class="testi-info"><strong>Shreeja V.</strong><span>Bangalore → Delhi</span></div>
-                            <div class="testi-badge">✅ Verified</div>
-                        </div>
-                    </article>
-
-                    <!-- 11 — Tisha -->
+                    <!-- Tisha -->
                     <article class="testi-card testi-featured">
                         <div class="testi-stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testi-quote">"Three days on the app and I had a 96% match. We both love cooking, hate loud guests, and sleep before midnight. It felt like the algorithm read my mind."</p>
+                        <p class="testi-quote">"Three days on the app and I had a 96% match. We both love cooking, hate
+                            loud guests, and sleep before midnight. It felt like the algorithm read my mind."</p>
                         <div class="testi-author">
                             <div class="testi-avatar"><img src="tisha.jpeg" alt="Tisha A." /></div>
                             <div class="testi-info"><strong>Tisha A.</strong><span>Jaipur → Mumbai</span></div>
                             <div class="testi-badge">✅ Verified</div>
                         </div>
                     </article>
-
-                </div><!-- /.testi-track -->
-
-                <!-- Next button -->
-                <button style="margin-left:100px" class="testi-arrow testi-next" id="testiNext" aria-label="Next testimonial">
+                </div>
+                <button style="margin-left:100px" class="testi-arrow testi-next" id="testiNext"
+                    aria-label="Next testimonial">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 5L13 10L8 15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 5L13 10L8 15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                            stroke-linejoin="round" />
                     </svg>
                 </button>
-
-            </div><!-- /.testi-carousel-wrapper -->
-
-            <!-- Dot indicators -->
+            </div>
             <div class="testi-dots" id="testiDots"></div>
-
         </div>
     </section>
 
@@ -451,7 +440,8 @@
                 <div class="quiz-content">
                     <span class="quiz-emoji">🏠</span>
                     <h2>What's your<br /><span class="gradient-text">roommate vibe?</span></h2>
-                    <p>Answer a few questions about your lifestyle and we'll match you with someone who actually gets you. No awkward convos. No bad surprises.</p>
+                    <p>Answer a few questions about your lifestyle and we'll match you with someone who actually gets
+                        you. No awkward convos. No bad surprises.</p>
                     <a href="#waitlist" class="btn btn-primary btn-large magnetic">
                         <span>Find My Perfect Match</span>
                         <span class="btn-arrow">→</span>
@@ -478,14 +468,16 @@
                         <span class="gradient-text">actually good roommates.</span>
                     </h2>
                     <p class="about-body reveal">
-                        Roomr is the app that treats finding a roommate like finding a relationship - because honestly, it kind of is. You live with this person. You share a fridge. You need to be compatible.
+                        Roomr is the app that treats finding a roommate like finding a relationship - because honestly,
+                        it kind of is. You live with this person. You share a fridge. You need to be compatible.
                     </p>
                     <ul class="about-features">
                         <li class="about-feature reveal" data-delay="0">
                             <span class="feature-icon">🧠</span>
                             <div>
                                 <strong>Personality-based matching</strong>
-                                <p>Our compatibility quiz goes way beyond "are you clean or messy?" We map full lifestyle profiles.</p>
+                                <p>Our compatibility quiz goes way beyond "are you clean or messy?" We map full
+                                    lifestyle profiles.</p>
                             </div>
                         </li>
                         <li class="about-feature reveal" data-delay="100">
@@ -499,14 +491,16 @@
                             <span class="feature-icon">🏠</span>
                             <div>
                                 <strong>Find rental homes</strong>
-                                <p>Browse listings, find places with your match, or bring your own rental and find a co-tenant.</p>
+                                <p>Browse listings, find places with your match, or bring your own rental and find a
+                                    co-tenant.</p>
                             </div>
                         </li>
                         <li class="about-feature reveal" data-delay="300">
                             <span class="feature-icon">🔑</span>
                             <div>
                                 <strong>Homeowners can list</strong>
-                                <p>Got a spare room? List your property and get matched with the ideal tenant. No randos.</p>
+                                <p>Got a spare room? List your property and get matched with the ideal tenant. No
+                                    randos.</p>
                             </div>
                         </li>
                     </ul>
@@ -580,7 +574,8 @@
                         </div>
                     </div>
                 </div>
-                <form class="waitlist-form reveal" id="waitlistForm" action="https://formspree.io/f/mwvwbaaw" method="POST" novalidate>
+                <form class="waitlist-form reveal" id="waitlistForm" action="https://formspree.io/f/mwvwbaaw"
+                    method="POST" novalidate>
                     <div class="form-group floating">
                         <input type="text" id="name" name="name" placeholder=" " required autocomplete="off" />
                         <label for="name">Your Name</label>
@@ -593,7 +588,8 @@
                     </div>
                     <div class="form-group floating">
                         <textarea id="message" name="message" rows="3" placeholder=" " maxlength="300"></textarea>
-                        <label for="message">Roommate horror story? <span class="optional">(optional)</span></label>
+                        <label for="message">What matters most in a roommate?<span
+                                class="optional">(optional)</span></label>
                         <span class="char-count" id="charCount">0 / 300</span>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full magnetic ripple" id="submitBtn">
@@ -627,9 +623,37 @@
                     </a>
                     <p>Find a roommate who actually fits your vibe. Not just whoever replied first.</p>
                     <div class="footer-socials">
-                        <a href="#" aria-label="Twitter" class="social-link">𝕏</a>
-                        <a href="#" aria-label="Instagram" class="social-link">📸</a>
-                        <a href="#" aria-label="TikTok" class="social-link">🎵</a>
+                        <a href="https://www.facebook.com/profile.php?id=61572334797541&mibextid=wwXIfr"
+                            aria-label="Facebook" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="https://x.com/roomrrapp?s=11" aria-label="Twitter / X" class="social-link"
+                            target="_blank" rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/roomrrconnect/" aria-label="LinkedIn"
+                            class="social-link" target="_blank" rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/roomrr.app?igsh=MTg0NmV2Mjg4eWR1bw%3D%3D&utm_source=qr"
+                            aria-label="Instagram" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -666,7 +690,29 @@
         </div>
     </footer>
 
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 15V5M10 5L5 10M10 5L15 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
     <script src="splash.js"></script>
     <script src="index.js"></script>
+    <script>
+        // Back to Top
+        (function () {
+            var btt = document.getElementById('backToTop');
+            if (!btt) return;
+            window.addEventListener('scroll', function () {
+                btt.classList.toggle('visible', window.scrollY > 400);
+            }, { passive: true });
+            btt.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
 </body>
+
 </html>
