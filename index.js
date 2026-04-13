@@ -1,5 +1,5 @@
 /* ============================================================
-   ROOMR — index.js v3.0
+   ROOMRR — index.js v3.0
    ============================================================ */
 
 'use strict';
@@ -63,13 +63,13 @@
 (function initThemeToggle() {
   var toggle = document.getElementById('themeToggle');
   var html   = document.documentElement;
-  var saved  = localStorage.getItem('roomr-theme') || 'dark';
+  var saved  = localStorage.getItem('roomrr-theme') || 'dark';
   applyTheme(saved);
   if (toggle) {
     toggle.addEventListener('change', function() {
       var newTheme = toggle.checked ? 'light' : 'dark';
       applyTheme(newTheme);
-      localStorage.setItem('roomr-theme', newTheme);
+      localStorage.setItem('roomrr-theme', newTheme);
     });
   }
   function applyTheme(theme) {

@@ -1,5 +1,5 @@
 /* ============================================================
-   ROOMR — splash.js  v2.0
+   ROOMRR — splash.js  v2.0
    NEW FILE — no existing code modified.
    Load this in index.html as the FIRST script (before index.js):
      <script src="splash.js"></script>
