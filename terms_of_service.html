@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Roomrr</title>
+  <meta name="description" content="Roomrr's Terms of Service — the rules of the road for using our platform." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+    :root {
+      --orange: #ea481e; --yellow: #f7940c; --black: #010101;
+      --green: #4ade80; --red: #ef4444;
+      --grad-brand: linear-gradient(135deg, var(--orange), var(--yellow));
+      --grad-brand-text: linear-gradient(90deg, var(--orange), var(--yellow));
+      --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px;
+      --radius-xl: 32px; --radius-full: 9999px;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+      --transition-spring: 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      --font: 'Manrope', sans-serif;
+    }
+    [data-theme="dark"] {
+      --bg: #080808; --bg-2: #0e0e0e; --bg-3: #161616; --bg-card: #111111;
+      --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.16);
+      --text: #f2f2f2; --text-2: #9a9a9a; --text-3: #555555;
+      --nav-bg: rgba(8,8,8,0.88); --glow-orange: rgba(234,72,30,0.28);
+    }
+    [data-theme="light"] {
+      --bg: #f9f8f6; --bg-2: #f3f2ef; --bg-3: #eceae5; --bg-card: #ffffff;
+      --border: rgba(0,0,0,0.07); --border-hover: rgba(0,0,0,0.18);
+      --text: #0a0a0a; --text-2: #5a5a5a; --text-3: #999999;
+      --nav-bg: rgba(249,248,246,0.92); --glow-orange: rgba(234,72,30,0.12);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;transition:background .55s,color .55s;}
+    a{text-decoration:none;color:inherit;} ul{list-style:none;}
+
+    .noise-overlay{position:fixed;inset:0;z-index:99999;pointer-events:none;opacity:0.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:180px 180px;}
+    .scroll-progress{position:fixed;top:0;left:0;height:2.5px;width:0%;background:var(--grad-brand);z-index:99998;border-radius:0 2px 2px 0;transition:width .08s linear;box-shadow:0 0 8px var(--orange);}
+
+    /* NAV */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 0;transition:background var(--transition),backdrop-filter var(--transition),box-shadow var(--transition),padding var(--transition);}
+    .navbar.scrolled{background:var(--nav-bg);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:0 1px 0 var(--border);padding:.7rem 0;}
+    .nav-inner{width:min(1200px,92%);margin:0 auto;display:flex;align-items:center;gap:2rem;}
+    .nav-logo{display:inline-flex;align-items:center;gap:0;text-decoration:none;margin-right:auto;}
+    .logo-letter{font-family:var(--font);font-size:1.55rem;font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1;}
+    [data-theme="light"] .logo-letter{color:var(--black);}
+    .logo-img{height:1.25rem;width:auto;display:block;object-fit:contain;margin-top:-1px;}
+    .nav-actions{display:flex;align-items:center;gap:.9rem;}
+    .theme-toggle{position:relative;cursor:pointer;}
+    .theme-toggle input{position:absolute;opacity:0;width:0;height:0;}
+    .toggle-track{display:flex;align-items:center;width:50px;height:26px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-full);padding:2px;cursor:pointer;transition:background var(--transition);}
+    .toggle-thumb{width:20px;height:20px;background:var(--grad-brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;transition:transform var(--transition-spring);position:relative;overflow:hidden;}
+    .toggle-icon{position:absolute;transition:opacity var(--transition),transform var(--transition);}
+    .toggle-icon.moon{opacity:1;transform:scale(1);} .toggle-icon.sun{opacity:0;transform:scale(.5);}
+    input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);}
+    input:checked~.toggle-track .toggle-icon.moon{opacity:0;transform:scale(.5);}
+    input:checked~.toggle-track .toggle-icon.sun{opacity:1;transform:scale(1);}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-size:.82rem;font-weight:700;padding:8px 18px;border-radius:var(--radius-full);border:none;outline:none;transition:transform var(--transition-spring),box-shadow var(--transition);white-space:nowrap;cursor:pointer;}
+    .btn-primary{background:var(--grad-brand);color:#fff;box-shadow:0 2px 12px var(--glow-orange);}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--glow-orange);}
+
+    /* HERO */
+    .policy-hero{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 5% 4rem;position:relative;overflow:hidden;}
+    .policy-hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0;}
+    .mesh-blob{position:absolute;border-radius:50%;filter:blur(90px);}
+    .blob-1{width:500px;height:500px;background:var(--orange);opacity:.1;top:-30%;left:-10%;animation:blobPulse 9s ease-in-out infinite;}
+    .blob-2{width:300px;height:300px;background:var(--yellow);opacity:.07;bottom:-20%;right:10%;animation:blobPulse 11s ease-in-out infinite reverse;}
+    .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;opacity:.4;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);}
+    @keyframes blobPulse{0%,100%{transform:scale(1) translate(0,0);}35%{transform:scale(1.08) translate(18px,-18px);}68%{transform:scale(.94) translate(-12px,14px);}}
+    .policy-hero-label{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--orange);border:1px solid rgba(234,72,30,.35);background:rgba(234,72,30,.07);padding:5px 14px;border-radius:var(--radius-full);margin-bottom:1.2rem;position:relative;z-index:1;animation:fadeUp .6s ease both;}
+    .policy-hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;letter-spacing:-.05em;line-height:1.08;position:relative;z-index:1;animation:fadeUp .6s .1s ease both;}
+    .gradient-text{background:var(--grad-brand-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .policy-hero p{font-size:.95rem;color:var(--text-2);margin-top:1rem;max-width:480px;line-height:1.7;position:relative;z-index:1;animation:fadeUp .6s .2s ease both;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+    /* LAYOUT */
+    .policy-layout{width:min(1200px,92%);margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:3rem;padding:3rem 0 6rem;align-items:start;}
+
+    /* TOC */
+    .toc{position:sticky;top:100px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:24px;overflow:hidden;}
+    .toc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-brand);}
+    .toc-title{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--text-3);margin-bottom:1rem;}
+    .toc ul{display:flex;flex-direction:column;gap:2px;}
+    .toc a{display:block;font-size:.82rem;font-weight:500;color:var(--text-2);padding:7px 10px;border-radius:var(--radius-sm);transition:background var(--transition),color var(--transition),padding-left var(--transition);border-left:2px solid transparent;}
+    .toc a:hover,.toc a.active{background:rgba(234,72,30,.07);color:var(--orange);border-left-color:var(--orange);padding-left:14px;}
+    .toc-footer{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.74rem;color:var(--text-3);line-height:1.5;}
+
+    /* CONTENT */
+    .policy-content{min-width:0;}
+    .info-bar{display:flex;flex-wrap:wrap;gap:1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:2.5rem;font-size:.82rem;color:var(--text-2);}
+    .info-chip{display:flex;align-items:center;gap:6px;font-weight:600;}
+    .info-chip span:first-child{font-size:1rem;}
+
+    .policy-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:36px 36px 32px;margin-bottom:1.5rem;position:relative;overflow:hidden;transition:border-color var(--transition),box-shadow var(--transition);}
+    .policy-section:hover{border-color:var(--border-hover);box-shadow:0 8px 32px rgba(0,0,0,.1);}
+    .policy-section::before{content:'';position:absolute;top:0;left:0;width:3px;bottom:0;background:var(--grad-brand);border-radius:0 2px 2px 0;opacity:0;transition:opacity var(--transition);}
+    .policy-section:hover::before{opacity:1;}
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(234,72,30,.1);border:1px solid rgba(234,72,30,.2);font-size:.7rem;font-weight:800;color:var(--orange);margin-bottom:12px;}
+    .policy-section h2{font-size:1.15rem;font-weight:800;letter-spacing:-.03em;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+    .section-icon{font-size:1.2rem;}
+    .policy-section p{font-size:.9rem;color:var(--text-2);line-height:1.78;margin-bottom:14px;}
+    .policy-section p:last-child{margin-bottom:0;}
+    .policy-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin:12px 0;padding-left:0;}
+    .policy-list li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text-2);line-height:1.65;}
+    .policy-list li::before{content:'→';color:var(--orange);font-weight:700;flex-shrink:0;margin-top:1px;}
+    .highlight-box{background:rgba(234,72,30,.06);border:1px solid rgba(234,72,30,.2);border-radius:var(--radius-md);padding:16px 20px;margin:16px 0;font-size:.85rem;color:var(--text-2);line-height:1.7;}
+    .highlight-box strong{color:var(--orange);}
+    .green-box{background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.2);border-radius:var(--radius-md);padding:16px 20px;margin:16px 0;font-size:.85rem;color:var(--text-2);line-height:1.7;}
+    .green-box strong{color:var(--green);}
+    .red-box{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.2);border-radius:var(--radius-md);padding:16px 20px;margin:16px 0;font-size:.85rem;color:var(--text-2);line-height:1.7;}
+    .red-box strong{color:var(--red);}
+
+    /* CONTACT CARD */
+    .contact-card{background:var(--grad-brand);border-radius:var(--radius-xl);padding:36px;text-align:center;color:#fff;margin-top:1.5rem;position:relative;overflow:hidden;}
+    .contact-card::before{content:'';position:absolute;inset:-40%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);pointer-events:none;}
+    .contact-card h3{font-size:1.3rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px;position:relative;z-index:1;}
+    .contact-card p{font-size:.88rem;opacity:.88;margin-bottom:1.4rem;position:relative;z-index:1;}
+    .contact-card a{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);color:#fff;font-weight:700;font-size:.88rem;padding:12px 24px;border-radius:var(--radius-full);transition:background var(--transition),transform var(--transition-spring);position:relative;z-index:1;}
+    .contact-card a:hover{background:rgba(255,255,255,.28);transform:translateY(-2px);}
+
+    /* FOOTER */
+    .footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 5%;}
+    .footer-inner{width:min(1200px,92%);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-logo-wrap{display:flex;align-items:center;gap:0;}
+    .footer-logo-letter{font-family:var(--font);font-size:1.3rem;font-weight:800;letter-spacing:-.04em;color:#fff;}
+    [data-theme="light"] .footer-logo-letter{color:var(--black);}
+    .footer-logo-img{height:1rem;width:auto;display:block;object-fit:contain;margin-top:-1px;}
+    .footer-copy{font-size:.78rem;color:var(--text-3);}
+    .footer-links-row{display:flex;gap:1.5rem;}
+    .footer-links-row a{font-size:.82rem;color:var(--text-2);transition:color var(--transition);}
+    .footer-links-row a:hover{color:var(--orange);}
+    .footer-links-row a.active{color:var(--orange);font-weight:700;}
+    .back-to-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--grad-brand);color:#fff;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(234,72,30,.28);z-index:9000;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .28s,visibility .28s,transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .28s;}
+    .back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0);}
+    .back-to-top:hover{box-shadow:0 8px 32px rgba(234,72,30,.4);transform:translateY(-3px);}
+    @media(max-width:900px){.policy-layout{grid-template-columns:1fr;}.toc{position:static;}}
+    @media(max-width:600px){.policy-section{padding:24px 20px;}.policy-hero{padding:8rem 5% 3rem;}.footer-inner{flex-direction:column;align-items:flex-start;gap:.7rem;}.footer-links-row{flex-wrap:wrap;gap:1rem;}}
+  </style>
+</head>
+<body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Roomrr home">
+        <span class="logo-letter" style="margin-right:2px;margin-bottom:4px">r</span>
+        <img src="logo.png" class="logo-img" alt="" aria-hidden="true" />
+        <span class="logo-letter">mrr</span>
+      </a>
+      <div class="nav-actions">
+        <label class="theme-toggle" aria-label="Toggle dark/light mode">
+          <input type="checkbox" id="themeToggle" />
+          <span class="toggle-track"><span class="toggle-thumb"><span class="toggle-icon moon">🌙</span><span class="toggle-icon sun">☀️</span></span></span>
+        </label>
+        <a href="index.html#waitlist" class="btn btn-primary"><span>Get Early Access</span><span>↗</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="policy-hero">
+    <div class="policy-hero-bg">
+      <div class="mesh-blob blob-1"></div>
+      <div class="mesh-blob blob-2"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="policy-hero-label">📜 Legal</div>
+    <h1>Terms of <span class="gradient-text">Service</span></h1>
+    <p>By using Roomrr, you agree to these terms. We've written them in plain language so you actually know what you're agreeing to.</p>
+  </section>
+
+  <main class="policy-layout">
+    <aside class="toc" aria-label="Table of contents">
+      <div class="toc-title">On this page</div>
+      <ul>
+        <li><a href="#acceptance" class="toc-link">1. Acceptance of Terms</a></li>
+        <li><a href="#eligibility" class="toc-link">2. Eligibility</a></li>
+        <li><a href="#account" class="toc-link">3. Your Account</a></li>
+        <li><a href="#platform-use" class="toc-link">4. Platform Use</a></li>
+        <li><a href="#prohibited" class="toc-link">5. Prohibited Conduct</a></li>
+        <li><a href="#content" class="toc-link">6. User Content</a></li>
+        <li><a href="#matching" class="toc-link">7. Matching & Listings</a></li>
+        <li><a href="#payments" class="toc-link">8. Payments & Fees</a></li>
+        <li><a href="#ip" class="toc-link">9. Intellectual Property</a></li>
+        <li><a href="#disclaimer" class="toc-link">10. Disclaimers</a></li>
+        <li><a href="#liability" class="toc-link">11. Limitation of Liability</a></li>
+        <li><a href="#termination" class="toc-link">12. Termination</a></li>
+        <li><a href="#disputes" class="toc-link">13. Dispute Resolution</a></li>
+        <li><a href="#changes" class="toc-link">14. Changes to Terms</a></li>
+        <li><a href="#contact" class="toc-link">15. Contact</a></li>
+      </ul>
+      <div class="toc-footer"><strong>Last updated:</strong><br/>April 11, 2026<br/><br/><strong>Governing law:</strong><br/>India</div>
+    </aside>
+
+    <div class="policy-content">
+      <div class="info-bar">
+        <div class="info-chip"><span>📅</span><span>Effective: April 11, 2026</span></div>
+        <div class="info-chip"><span>🇮🇳</span><span>Indian law governs</span></div>
+        <div class="info-chip"><span>⚖️</span><span>IT Act 2000 compliant</span></div>
+        <div class="info-chip"><span>✉️</span><span>legal@roomrr.app</span></div>
+      </div>
+
+      <section class="policy-section" id="acceptance">
+        <div class="section-num">01</div>
+        <h2><span class="section-icon">✅</span> Acceptance of Terms</h2>
+        <p>Welcome to <strong>Roomrr</strong>, operated by Roomrr Technologies Private Limited ("Roomrr," "we," "our," or "us"). These Terms of Service ("Terms") constitute a legally binding agreement between you and Roomrr governing your access to and use of our website, mobile application, and related services (collectively, the "Platform").</p>
+        <p>By registering for an account, accessing, or using the Platform in any way, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy, which is incorporated herein by reference.</p>
+        <div class="highlight-box"><strong>If you do not agree to these Terms, you must not use the Platform.</strong> Please read these Terms carefully before proceeding.</div>
+      </section>
+
+      <section class="policy-section" id="eligibility">
+        <div class="section-num">02</div>
+        <h2><span class="section-icon">🪪</span> Eligibility</h2>
+        <p>To use Roomrr, you must meet all of the following eligibility requirements:</p>
+        <ul class="policy-list">
+          <li>You must be at least <strong>18 years of age</strong>.</li>
+          <li>You must be a resident of India or have a valid Indian address for property-related interactions.</li>
+          <li>You must have the legal capacity to enter into a binding contract.</li>
+          <li>You must not have been previously suspended or banned from the Platform.</li>
+          <li>You must not be prohibited from using the Platform under any applicable law.</li>
+        </ul>
+        <p>By using the Platform, you represent and warrant that you meet all eligibility requirements. Roomrr reserves the right to verify your eligibility at any time and to refuse or revoke access if requirements are not met.</p>
+      </section>
+
+      <section class="policy-section" id="account">
+        <div class="section-num">03</div>
+        <h2><span class="section-icon">👤</span> Your Account</h2>
+        <p>To access most features of the Platform, you must create an account. When registering, you agree to:</p>
+        <ul class="policy-list">
+          <li>Provide accurate, current, and complete information about yourself.</li>
+          <li>Keep your account information up to date at all times.</li>
+          <li>Maintain the confidentiality of your login credentials and not share them with any third party.</li>
+          <li>Be solely responsible for all activity that occurs under your account.</li>
+          <li>Notify us immediately at <strong>support@roomrr.app</strong> if you suspect any unauthorised access to your account.</li>
+          <li>Use only one account per person — creating multiple accounts is prohibited.</li>
+        </ul>
+        <div class="highlight-box"><strong>Account security tip:</strong> Use a strong, unique password and enable any two-factor authentication options we offer. Roomrr will never ask for your password via email or chat.</div>
+        <p>Roomrr reserves the right to suspend or terminate accounts that provide false information, violate these Terms, or engage in activity that harms other users or the Platform.</p>
+      </section>
+
+      <section class="policy-section" id="platform-use">
+        <div class="section-num">04</div>
+        <h2><span class="section-icon">🏠</span> Platform Use</h2>
+        <p>Roomrr grants you a limited, non-exclusive, non-transferable, revocable licence to use the Platform for its intended purpose: finding compatible roommates and rental accommodation in India. You may use the Platform to:</p>
+        <ul class="policy-list">
+          <li>Create and manage a personal profile for roommate-matching purposes.</li>
+          <li>Complete our compatibility quiz and receive match suggestions.</li>
+          <li>Browse, search, and connect with other verified users.</li>
+          <li>List a property if you are a homeowner or authorised agent.</li>
+          <li>Communicate with matches through our in-app messaging system.</li>
+          <li>Access resources, guides, and tools provided by Roomrr.</li>
+        </ul>
+        <p>This licence is strictly for personal, non-commercial use. You may not use the Platform for commercial purposes — such as recruiting tenants on behalf of others, operating a property management service, or running a business — without Roomrr's prior written consent.</p>
+      </section>
+
+      <section class="policy-section" id="prohibited">
+        <div class="section-num">05</div>
+        <h2><span class="section-icon">🚫</span> Prohibited Conduct</h2>
+        <p>The following conduct is strictly prohibited on the Platform. Violation may result in immediate account termination and legal action:</p>
+        <ul class="policy-list">
+          <li><strong>Fraud & Misrepresentation:</strong> Creating a false profile, impersonating another person, or providing fraudulent information.</li>
+          <li><strong>Harassment & Abuse:</strong> Harassing, threatening, intimidating, stalking, or engaging in abusive behaviour toward any user.</li>
+          <li><strong>Discrimination:</strong> Refusing to connect with or discriminating against users based on religion, caste, race, gender, sexual orientation, disability, or any other protected characteristic.</li>
+          <li><strong>Illegal Activity:</strong> Using the Platform to facilitate any activity that violates Indian law, including the Indian Penal Code, IT Act 2000, or POCSO Act.</li>
+          <li><strong>Spam & Solicitation:</strong> Sending unsolicited messages, chain letters, advertisements, or soliciting money from other users.</li>
+          <li><strong>Scraping & Automation:</strong> Using bots, scripts, or automated tools to access, scrape, or harvest data from the Platform.</li>
+          <li><strong>Fake Listings:</strong> Posting property listings that do not exist, are unavailable, or that you are not authorised to list.</li>
+          <li><strong>Off-Platform Payments:</strong> Requesting or making payments outside the Platform to circumvent our fee structure in a way that harms other users.</li>
+          <li><strong>Malware & Attacks:</strong> Uploading malicious code, attempting to breach our security, or disrupting Platform services.</li>
+          <li><strong>Minors:</strong> Attempting to contact, match with, or engage with any user who is or appears to be under 18 years of age.</li>
+        </ul>
+        <div class="red-box"><strong>⚠️ Zero tolerance:</strong> Harassment, fraud, and discrimination will result in immediate, permanent account termination and may be reported to law enforcement authorities.</div>
+      </section>
+
+      <section class="policy-section" id="content">
+        <div class="section-num">06</div>
+        <h2><span class="section-icon">📸</span> User Content</h2>
+        <p>When you submit content to the Platform — including profile photos, bios, property descriptions, messages, and quiz responses — you retain ownership of that content. However, by submitting content you grant Roomrr a worldwide, royalty-free, non-exclusive, sublicensable licence to use, display, reproduce, and distribute that content solely for the purpose of operating and improving the Platform.</p>
+        <p>You represent and warrant that:</p>
+        <ul class="policy-list">
+          <li>You own or have the right to submit all content you provide.</li>
+          <li>Your content does not infringe any third-party intellectual property, privacy, or other rights.</li>
+          <li>Your content does not contain defamatory, obscene, hateful, or illegal material.</li>
+          <li>Profile photos accurately represent you and are not of another person without their consent.</li>
+        </ul>
+        <p>Roomrr reserves the right to remove any content that violates these Terms or that we determine, at our sole discretion, to be inappropriate. We do not pre-screen all user content but may review and moderate content upon receipt of complaints.</p>
+      </section>
+
+      <section class="policy-section" id="matching">
+        <div class="section-num">07</div>
+        <h2><span class="section-icon">🎯</span> Matching & Listings</h2>
+        <p>Our compatibility algorithm generates match suggestions based on your profile data and quiz responses. You understand and agree that:</p>
+        <ul class="policy-list">
+          <li>Match suggestions are generated algorithmically and do not constitute a guarantee of compatibility, safety, or suitability.</li>
+          <li>Roomrr does not conduct criminal background checks beyond identity verification unless explicitly stated.</li>
+          <li>You are solely responsible for independently verifying the identity, suitability, and trustworthiness of any person you choose to live with.</li>
+          <li>Roomrr is not a party to any rental agreement, lease, or accommodation arrangement between users.</li>
+          <li>Property listings are provided by users and homeowners. Roomrr does not own, manage, inspect, or guarantee any listed property.</li>
+          <li>You should visit any property in person and review all legal documents before entering into any tenancy agreement.</li>
+        </ul>
+        <div class="highlight-box"><strong>Safety reminder:</strong> Always meet a potential roommate in a public place first. Trust your instincts. Roomrr provides matching tools — your safety decisions are ultimately your own.</div>
+      </section>
+
+      <section class="policy-section" id="payments">
+        <div class="section-num">08</div>
+        <h2><span class="section-icon">💳</span> Payments & Fees</h2>
+        <p>Roomrr currently offers free access during its beta phase. When paid features are introduced, the following terms will apply:</p>
+        <ul class="policy-list">
+          <li><strong>Subscription Fees:</strong> Premium features will be available on a subscription basis. Pricing will be clearly disclosed before purchase.</li>
+          <li><strong>Early Bird Users:</strong> Users who join via the waitlist and are among the first 1,000 to sign up will receive premium features free for life as stated in our waitlist offer.</li>
+          <li><strong>Payment Processing:</strong> Payments are processed by third-party providers (Razorpay / Stripe). By making a payment, you also agree to their terms of service.</li>
+          <li><strong>Refunds:</strong> Subscriptions are non-refundable except where required by Indian consumer protection law. If you believe you are entitled to a refund, contact support@roomrr.app within 7 days of the charge.</li>
+          <li><strong>Taxes:</strong> All fees are exclusive of applicable GST and other taxes, which will be added at checkout as required by law.</li>
+          <li><strong>Chargebacks:</strong> Initiating a fraudulent chargeback may result in account suspension.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section" id="ip">
+        <div class="section-num">09</div>
+        <h2><span class="section-icon">©️</span> Intellectual Property</h2>
+        <p>All content, design, code, trademarks, logos, and other materials on the Platform that are not user-submitted content are the exclusive intellectual property of Roomrr Technologies Private Limited or our licensors, protected under the Copyright Act 1957 and other applicable Indian and international laws.</p>
+        <ul class="policy-list">
+          <li>The "Roomrr" name, logo, and brand identity are trademarks of Roomrr Technologies Private Limited.</li>
+          <li>You may not copy, reproduce, modify, distribute, or create derivative works from our intellectual property without prior written consent.</li>
+          <li>Linking to the Platform from your own website is permitted provided you do not misrepresent your relationship with Roomrr.</li>
+          <li>Any feedback or suggestions you provide to Roomrr may be used by us without obligation to compensate you.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section" id="disclaimer">
+        <div class="section-num">10</div>
+        <h2><span class="section-icon">⚠️</span> Disclaimers</h2>
+        <p>THE PLATFORM IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW. ROOMRR SPECIFICALLY DISCLAIMS:</p>
+        <ul class="policy-list">
+          <li>Any warranty that the Platform will be uninterrupted, error-free, or free of viruses or harmful components.</li>
+          <li>Any warranty regarding the accuracy, reliability, or completeness of any content on the Platform, including user profiles and property listings.</li>
+          <li>Any warranty that matches produced by our algorithm will result in compatible, safe, or satisfactory living arrangements.</li>
+          <li>Any responsibility for the conduct of users, whether online or offline.</li>
+          <li>Any responsibility for disputes between users, including disputes regarding tenancy, rent, or property condition.</li>
+        </ul>
+        <p>Roomrr is a technology platform facilitating connections between individuals. We are not a real estate agent, property manager, background check service, or guarantor of any kind.</p>
+      </section>
+
+      <section class="policy-section" id="liability">
+        <div class="section-num">11</div>
+        <h2><span class="section-icon">🛡️</span> Limitation of Liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE INDIAN LAW, ROOMRR AND ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THE PLATFORM.</p>
+        <p>In no event shall Roomrr's total cumulative liability to you exceed the amount you paid to Roomrr in the twelve (12) months preceding the claim, or ₹1,000 (Indian Rupees one thousand), whichever is greater.</p>
+        <div class="highlight-box"><strong>Note:</strong> Some jurisdictions do not allow certain liability limitations. Where prohibited by law, these limitations apply to the maximum extent permitted.</div>
+      </section>
+
+      <section class="policy-section" id="termination">
+        <div class="section-num">12</div>
+        <h2><span class="section-icon">🚪</span> Termination</h2>
+        <p>Either party may terminate the relationship governed by these Terms at any time.</p>
+        <ul class="policy-list">
+          <li><strong>By You:</strong> You may delete your account at any time through your account settings. Deletion requests are processed within 30 days as described in our Privacy Policy.</li>
+          <li><strong>By Roomrr:</strong> We may suspend or terminate your account immediately, without prior notice, if we determine that you have violated these Terms, engaged in fraudulent activity, posed a safety risk, or for any other reason at our sole discretion.</li>
+          <li><strong>Effect of Termination:</strong> Upon termination, your licence to use the Platform ceases immediately. Provisions of these Terms that by their nature should survive termination — including Sections 6 (User Content), 9 (IP), 10 (Disclaimers), 11 (Liability), and 13 (Disputes) — shall survive.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section" id="disputes">
+        <div class="section-num">13</div>
+        <h2><span class="section-icon">⚖️</span> Dispute Resolution</h2>
+        <p>These Terms are governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions.</p>
+        <ul class="policy-list">
+          <li><strong>Informal Resolution First:</strong> Before filing any legal claim, you agree to contact us at legal@roomrr.app and attempt to resolve the dispute informally for at least 30 days.</li>
+          <li><strong>Arbitration:</strong> If informal resolution fails, disputes shall be resolved through binding arbitration under the Arbitration and Conciliation Act, 1996 (India). Arbitration shall be conducted in Bengaluru, Karnataka, in English.</li>
+          <li><strong>Jurisdiction:</strong> For disputes not subject to arbitration, you submit to the exclusive jurisdiction of the courts of Bengaluru, Karnataka, India.</li>
+          <li><strong>Class Action Waiver:</strong> You agree to resolve disputes with Roomrr on an individual basis and waive any right to bring or participate in any class, collective, or representative action.</li>
+          <li><strong>Consumer Rights:</strong> Nothing in this section limits your statutory rights as a consumer under applicable Indian consumer protection laws.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section" id="changes">
+        <div class="section-num">14</div>
+        <h2><span class="section-icon">📣</span> Changes to Terms</h2>
+        <p>Roomrr may update these Terms from time to time. When we make material changes, we will:</p>
+        <ul class="policy-list">
+          <li>Update the "Last Updated" date at the top of this page.</li>
+          <li>Send an email notification to registered users at least 14 days before changes take effect.</li>
+          <li>Display a prominent in-app notice for active users.</li>
+        </ul>
+        <p>Your continued use of the Platform after the effective date of updated Terms constitutes your acceptance of the revised Terms. If you do not agree to the revised Terms, you must stop using the Platform and delete your account.</p>
+      </section>
+
+      <section class="policy-section" id="contact">
+        <div class="section-num">15</div>
+        <h2><span class="section-icon">📬</span> Contact</h2>
+        <p>For questions about these Terms, please contact us:</p>
+        <ul class="policy-list">
+          <li><strong>Company:</strong> Roomrr Technologies Private Limited</li>
+          <li><strong>Email:</strong> legal@roomrr.app</li>
+          <li><strong>General Support:</strong> support@roomrr.app</li>
+          <li><strong>Response time:</strong> We respond to all legal queries within 5 business days.</li>
+        </ul>
+      </section>
+
+      <div class="contact-card">
+        <h3>Questions about these Terms? 📜</h3>
+        <p>We're happy to clarify anything in plain English. Just drop us a line.</p>
+        <a href="mailto:legal@roomrr.app">✉️ legal@roomrr.app</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-wrap">
+          <span class="footer-logo-letter" style="margin-right:2px;margin-bottom:4px">r</span>
+          <img src="logo.png" class="footer-logo-img" alt="" aria-hidden="true" />
+          <span class="footer-logo-letter">mrr</span>
+        </div>
+        <div class="footer-copy" style="margin-top:6px;">© 2026 Roomrr. All rights reserved.</div>
+      </div>
+      <nav class="footer-links-row" aria-label="Legal links">
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html" class="active">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 15V5M10 5L5 10M10 5L15 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script>
+    (function(){var t=document.getElementById('themeToggle'),h=document.documentElement,s=localStorage.getItem('roomr-theme')||'dark';h.setAttribute('data-theme',s);if(t)t.checked=(s==='light');if(t)t.addEventListener('change',function(){var n=t.checked?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('roomr-theme',n);});})();
+    (function(){var nb=document.getElementById('navbar');window.addEventListener('scroll',function(){if(nb)nb.classList.toggle('scrolled',window.scrollY>60);},{passive:true});})();
+    (function(){var bar=document.getElementById('scrollProgress');window.addEventListener('scroll',function(){var sc=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(sc>0?(window.scrollY/sc)*100:0)+'%';},{passive:true});})();
+    (function(){var btt=document.getElementById('backToTop');window.addEventListener('scroll',function(){btt.classList.toggle('visible',window.scrollY>400);},{passive:true});btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
+    (function(){var links=document.querySelectorAll('.toc-link'),sections=Array.from(document.querySelectorAll('.policy-section'));window.addEventListener('scroll',function(){var y=window.scrollY+120,cur='';sections.forEach(function(s){if(s.offsetTop<=y)cur=s.id;});links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+cur);});},{passive:true});})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Roomrr</title>
+  <meta name="description" content="Roomrr Blog — tips, stories, and guides for finding your perfect roommate." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+    :root{--orange:#ea481e;--yellow:#f7940c;--black:#010101;--green:#4ade80;--red:#ef4444;--grad-brand:linear-gradient(135deg,var(--orange),var(--yellow));--grad-brand-text:linear-gradient(90deg,var(--orange),var(--yellow));--radius-sm:10px;--radius-md:16px;--radius-lg:24px;--radius-xl:32px;--radius-full:9999px;--transition:.28s cubic-bezier(.4,0,.2,1);--transition-spring:.5s cubic-bezier(.34,1.56,.64,1);--font:'Manrope',sans-serif;}
+    [data-theme="dark"]{--bg:#080808;--bg-2:#0e0e0e;--bg-3:#161616;--bg-card:#111111;--border:rgba(255,255,255,.07);--border-hover:rgba(255,255,255,.16);--text:#f2f2f2;--text-2:#9a9a9a;--text-3:#555555;--nav-bg:rgba(8,8,8,.88);--glow-orange:rgba(234,72,30,.28);}
+    [data-theme="light"]{--bg:#f9f8f6;--bg-2:#f3f2ef;--bg-3:#eceae5;--bg-card:#ffffff;--border:rgba(0,0,0,.07);--border-hover:rgba(0,0,0,.18);--text:#0a0a0a;--text-2:#5a5a5a;--text-3:#999999;--nav-bg:rgba(249,248,246,.92);--glow-orange:rgba(234,72,30,.12);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;transition:background .55s,color .55s;}
+    a{text-decoration:none;color:inherit;} ul{list-style:none;}
+
+    .noise-overlay{position:fixed;inset:0;z-index:99999;pointer-events:none;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:180px 180px;}
+    .scroll-progress{position:fixed;top:0;left:0;height:2.5px;width:0%;background:var(--grad-brand);z-index:99998;border-radius:0 2px 2px 0;transition:width .08s linear;box-shadow:0 0 8px var(--orange);}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 0;transition:background var(--transition),backdrop-filter var(--transition),box-shadow var(--transition),padding var(--transition);}
+    .navbar.scrolled{background:var(--nav-bg);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:0 1px 0 var(--border);padding:.7rem 0;}
+    .nav-inner{width:min(1200px,92%);margin:0 auto;display:flex;align-items:center;gap:2rem;}
+    .nav-logo{display:inline-flex;align-items:center;gap:0;text-decoration:none;margin-right:auto;}
+    .logo-letter{font-family:var(--font);font-size:1.55rem;font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1;}
+    [data-theme="light"] .logo-letter{color:var(--black);}
+    .logo-img{height:1.25rem;width:auto;display:block;object-fit:contain;margin-top:-1px;}
+    .nav-actions{display:flex;align-items:center;gap:.9rem;}
+    .theme-toggle{position:relative;cursor:pointer;}
+    .theme-toggle input{position:absolute;opacity:0;width:0;height:0;}
+    .toggle-track{display:flex;align-items:center;width:50px;height:26px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-full);padding:2px;cursor:pointer;transition:background var(--transition);}
+    .toggle-thumb{width:20px;height:20px;background:var(--grad-brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;transition:transform var(--transition-spring);position:relative;overflow:hidden;}
+    .toggle-icon{position:absolute;transition:opacity var(--transition),transform var(--transition);}
+    .toggle-icon.moon{opacity:1;transform:scale(1);} .toggle-icon.sun{opacity:0;transform:scale(.5);}
+    input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);}
+    input:checked~.toggle-track .toggle-icon.moon{opacity:0;transform:scale(.5);}
+    input:checked~.toggle-track .toggle-icon.sun{opacity:1;transform:scale(1);}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-size:.82rem;font-weight:700;padding:8px 18px;border-radius:var(--radius-full);border:none;outline:none;transition:transform var(--transition-spring),box-shadow var(--transition);white-space:nowrap;cursor:pointer;}
+    .btn-primary{background:var(--grad-brand);color:#fff;box-shadow:0 2px 12px var(--glow-orange);}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--glow-orange);}
+    .gradient-text{background:var(--grad-brand-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+    /* HERO */
+    .blog-hero{min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 5% 4rem;position:relative;overflow:hidden;}
+    .blog-hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0;}
+    .mesh-blob{position:absolute;border-radius:50%;filter:blur(90px);}
+    .blob-1{width:500px;height:500px;background:var(--orange);opacity:.1;top:-30%;left:-10%;animation:blobPulse 9s ease-in-out infinite;}
+    .blob-2{width:300px;height:300px;background:var(--yellow);opacity:.07;bottom:-20%;right:10%;animation:blobPulse 11s ease-in-out infinite reverse;}
+    .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;opacity:.4;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);}
+    @keyframes blobPulse{0%,100%{transform:scale(1) translate(0,0);}35%{transform:scale(1.08) translate(18px,-18px);}68%{transform:scale(.94) translate(-12px,14px);}}
+    .blog-hero-label{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--orange);border:1px solid rgba(234,72,30,.35);background:rgba(234,72,30,.07);padding:5px 14px;border-radius:var(--radius-full);margin-bottom:1.2rem;position:relative;z-index:1;animation:fadeUp .6s ease both;}
+    .blog-hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;letter-spacing:-.05em;line-height:1.08;position:relative;z-index:1;animation:fadeUp .6s .1s ease both;}
+    .blog-hero p{font-size:.95rem;color:var(--text-2);margin-top:1rem;max-width:480px;line-height:1.7;position:relative;z-index:1;animation:fadeUp .6s .2s ease both;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+    /* MAIN */
+    .blog-main{width:min(1200px,92%);margin:0 auto;padding:3rem 0 6rem;}
+
+    /* FILTER BAR */
+    .blog-filters{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+    .filter-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.78rem;font-weight:700;padding:7px 16px;border-radius:var(--radius-full);border:1.5px solid var(--border);background:none;color:var(--text-2);cursor:pointer;transition:all var(--transition);}
+    .filter-btn:hover{border-color:var(--orange);color:var(--orange);}
+    .filter-btn.active{background:var(--grad-brand);border-color:transparent;color:#fff;}
+    .blog-count{margin-left:auto;font-size:.78rem;color:var(--text-3);font-weight:600;}
+
+    /* GRID */
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;}
+
+    /* BLOG CARD */
+    .blog-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;transition:transform var(--transition-spring),border-color var(--transition),box-shadow var(--transition);cursor:pointer;position:relative;}
+    .blog-card::before{content:'';position:absolute;inset:-1px;border-radius:inherit;background:var(--grad-brand);z-index:-1;opacity:0;transition:opacity var(--transition);}
+    .blog-card:hover::before{opacity:1;}
+    .blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px var(--glow-orange);}
+    .blog-card-img{width:100%;height:200px;object-fit:cover;display:block;background:var(--bg-3);}
+    .blog-card-img-placeholder{width:100%;height:200px;background:var(--bg-3);display:flex;align-items:center;justify-content:center;font-size:3rem;}
+    .blog-card-body{padding:22px;}
+    .blog-card-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+    .blog-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--orange);background:rgba(234,72,30,.08);border:1px solid rgba(234,72,30,.18);padding:3px 10px;border-radius:var(--radius-full);}
+    .blog-date{font-size:.72rem;color:var(--text-3);font-weight:500;}
+    .blog-read-time{font-size:.72rem;color:var(--text-3);font-weight:500;}
+    .blog-card h2{font-size:1rem;font-weight:800;letter-spacing:-.03em;line-height:1.35;margin-bottom:10px;}
+    .blog-card p{font-size:.84rem;color:var(--text-2);line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+    .blog-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);}
+    .blog-author{display:flex;align-items:center;gap:8px;}
+    .blog-author-avatar{width:28px;height:28px;border-radius:50%;background:var(--grad-brand);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;overflow:hidden;}
+    .blog-author-avatar img{width:100%;height:100%;object-fit:cover;}
+    .blog-author-name{font-size:.76rem;font-weight:600;color:var(--text-2);}
+    .blog-read-link{font-size:.76rem;font-weight:700;color:var(--orange);display:flex;align-items:center;gap:4px;transition:gap var(--transition);}
+    .blog-card:hover .blog-read-link{gap:8px;}
+
+    /* FEATURED CARD */
+    .blog-card.featured{grid-column:1/-1;}
+    .blog-card.featured .blog-card-img-placeholder{height:280px;}
+    .blog-card.featured h2{font-size:1.3rem;}
+
+    /* EMPTY STATE */
+    .blog-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem;border:1px dashed var(--border);border-radius:var(--radius-xl);background:var(--bg-card);}
+    .blog-empty-visual{position:relative;margin-bottom:2rem;}
+    .blog-empty-emoji{font-size:5rem;display:block;animation:floatEmpty 4s ease-in-out infinite;}
+    @keyframes floatEmpty{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-14px) rotate(3deg);}}
+    .blog-empty-dots{display:flex;justify-content:center;gap:6px;margin-top:1rem;}
+    .blog-empty-dot{width:8px;height:8px;border-radius:50%;background:var(--border-hover);animation:dotPulse 1.5s ease-in-out infinite;}
+    .blog-empty-dot:nth-child(2){animation-delay:.2s;}
+    .blog-empty-dot:nth-child(3){animation-delay:.4s;}
+    @keyframes dotPulse{0%,100%{opacity:.3;transform:scale(1);}50%{opacity:1;transform:scale(1.3);background:var(--orange);}}
+    .blog-empty h2{font-size:1.5rem;font-weight:800;letter-spacing:-.04em;margin-bottom:.7rem;}
+    .blog-empty p{font-size:.92rem;color:var(--text-2);max-width:380px;line-height:1.7;margin-bottom:1.8rem;}
+    .blog-empty-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:2rem;}
+    .blog-empty-tag{font-size:.75rem;font-weight:600;color:var(--text-3);border:1px solid var(--border);padding:5px 14px;border-radius:var(--radius-full);background:var(--bg-3);}
+    .blog-notify-form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;}
+    .blog-notify-input{background:var(--bg-3);border:1.5px solid var(--border);border-radius:var(--radius-full);padding:10px 20px;font-family:var(--font);font-size:.85rem;color:var(--text);outline:none;transition:border-color var(--transition);min-width:240px;}
+    .blog-notify-input:focus{border-color:var(--orange);}
+    .blog-notify-btn{background:var(--grad-brand);color:#fff;border:none;border-radius:var(--radius-full);padding:10px 22px;font-family:var(--font);font-size:.85rem;font-weight:700;cursor:pointer;transition:transform var(--transition-spring),box-shadow var(--transition);}
+    .blog-notify-btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px var(--glow-orange);}
+    .blog-notify-success{font-size:.82rem;color:var(--green);font-weight:600;margin-top:.8rem;display:none;}
+
+    /* COMING SOON CARDS (skeleton teasers) */
+    .coming-soon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2.5rem;}
+    .coming-soon-card{background:var(--bg-card);border:1px dashed var(--border);border-radius:var(--radius-xl);padding:28px;position:relative;overflow:hidden;}
+    .coming-soon-card::before{content:'';position:absolute;top:0;right:0;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;background:rgba(234,72,30,.08);color:var(--orange);padding:4px 12px;border-radius:0 0 0 var(--radius-sm);}
+    .skel-line{height:10px;background:var(--bg-3);border-radius:var(--radius-full);margin-bottom:8px;animation:skelShimmer 1.8s ease-in-out infinite;}
+    .skel-line.w80{width:80%;}
+    .skel-line.w60{width:60%;}
+    .skel-line.w90{width:90%;}
+    .skel-line.w40{width:40%;}
+    .skel-line.tall{height:14px;margin-bottom:12px;}
+    @keyframes skelShimmer{0%,100%{opacity:.4;}50%{opacity:.9;}}
+    .coming-soon-label{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+    .coming-soon-topics{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:12px;}
+    .coming-soon-topic{font-size:.68rem;font-weight:600;color:var(--text-3);background:var(--bg-3);border:1px solid var(--border);padding:3px 10px;border-radius:var(--radius-full);}
+
+    /* FOOTER */
+    .footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 5%;}
+    .footer-inner{width:min(1200px,92%);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-logo-wrap{display:flex;align-items:center;gap:0;}
+    .footer-logo-letter{font-family:var(--font);font-size:1.3rem;font-weight:800;letter-spacing:-.04em;color:#fff;}
+    [data-theme="light"] .footer-logo-letter{color:var(--black);}
+    .footer-logo-img{height:1rem;width:auto;display:block;object-fit:contain;margin-top:-1px;}
+    .footer-copy{font-size:.78rem;color:var(--text-3);}
+    .footer-links-row{display:flex;gap:1.5rem;}
+    .footer-links-row a{font-size:.82rem;color:var(--text-2);transition:color var(--transition);}
+    .footer-links-row a:hover,.footer-links-row a.active{color:var(--orange);}
+    .footer-links-row a.active{font-weight:700;}
+    .back-to-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--grad-brand);color:#fff;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(234,72,30,.28);z-index:9000;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .28s,visibility .28s,transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .28s;}
+    .back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0);}
+    .back-to-top:hover{box-shadow:0 8px 32px rgba(234,72,30,.4);transform:translateY(-3px);}
+    @media(max-width:600px){.blog-hero{padding:8rem 5% 3rem;}.blog-grid{grid-template-columns:1fr;}.coming-soon-grid{grid-template-columns:1fr;}.footer-inner{flex-direction:column;align-items:flex-start;}.footer-links-row{flex-wrap:wrap;gap:1rem;}}
+  </style>
+</head>
+<body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Roomrr home">
+        <span class="logo-letter" style="margin-right:2px;margin-bottom:4px">r</span>
+        <img src="logo.png" class="logo-img" alt="" aria-hidden="true" />
+        <span class="logo-letter">mrr</span>
+      </a>
+      <div class="nav-actions">
+        <label class="theme-toggle" aria-label="Toggle dark/light mode">
+          <input type="checkbox" id="themeToggle" />
+          <span class="toggle-track"><span class="toggle-thumb"><span class="toggle-icon moon">🌙</span><span class="toggle-icon sun">☀️</span></span></span>
+        </label>
+        <a href="index.html#waitlist" class="btn btn-primary"><span>Get Early Access</span><span>↗</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-hero">
+    <div class="blog-hero-bg">
+      <div class="mesh-blob blob-1"></div>
+      <div class="mesh-blob blob-2"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="blog-hero-label">✍️ Roomrr Blog</div>
+    <h1>Stories, Tips &amp; <span class="gradient-text">Roommate Wisdom</span></h1>
+    <p>Everything you need to find your perfect roommate — and not lose your mind in the process.</p>
+  </section>
+
+  <main class="blog-main" id="blogMain">
+    <!-- Filters rendered by JS -->
+    <div id="blogFilters"></div>
+    <!-- Blog grid rendered by JS -->
+    <div id="blogGrid"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-wrap">
+          <span class="footer-logo-letter" style="margin-right:2px;margin-bottom:4px">r</span>
+          <img src="logo.png" class="footer-logo-img" alt="" aria-hidden="true" />
+          <span class="footer-logo-letter">mrr</span>
+        </div>
+        <div class="footer-copy" style="margin-top:6px;">© 2026 Roomrr. All rights reserved.</div>
+      </div>
+      <nav class="footer-links-row" aria-label="Footer links">
+        <a href="privacy_policy.html">Privacy</a>
+        <a href="terms_of_service.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 15V5M10 5L5 10M10 5L15 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script>
+    /* ============================================================
+       ROOMRR BLOG — DATA STORE
+       To add a blog post, add an object to the BLOG_POSTS array.
+       Leave the array empty to show the "No blogs yet" state.
+       ============================================================
+
+       Each post object shape:
+       {
+         id:        (string)  unique slug, e.g. "how-to-find-roommate"
+         title:     (string)  post title
+         excerpt:   (string)  short description (2-3 sentences)
+         category:  (string)  one of: "Tips", "Stories", "Guide", "News", "Culture"
+         emoji:     (string)  emoji used as cover image placeholder
+         author:    (string)  author display name
+         authorAvatar: (string) emoji avatar for author, or image URL
+         date:      (string)  human-readable date e.g. "April 10, 2026"
+         readTime:  (string)  e.g. "5 min read"
+         featured:  (boolean) if true, card spans full width (first featured only)
+         url:       (string)  link to the full article (use "#" if not published yet)
+       }
+    ============================================================ */
+
+    var BLOG_POSTS = [
+      // ← Add blog posts here. Leave empty for the "No blogs yet" state.
+      // Example (uncomment to test):
+      // {
+      //   id: "how-to-find-perfect-roommate",
+      //   title: "How to Find Your Perfect Roommate in 2026 (Without Losing Your Mind)",
+      //   excerpt: "Finding a good roommate feels impossible — until you know what to actually look for. We break down the 7 questions you need to ask before signing any lease together.",
+      //   category: "Guide",
+      //   emoji: "🏠",
+      //   author: "Roomrr Team",
+      //   authorAvatar: "🏠",
+      //   date: "April 10, 2026",
+      //   readTime: "6 min read",
+      //   featured: true,
+      //   url: "#"
+      // },
+    ];
+
+    /* ============================================================
+       UPCOMING TOPICS — shown in the empty state
+       These give readers a preview of what's coming.
+    ============================================================ */
+    var UPCOMING_TOPICS = [
+      { emoji: "🏠", label: "Guide", title: "7 Questions to Ask Before Signing a Lease Together", topics: ["Compatibility", "Lease Tips", "Finance"] },
+      { emoji: "🤫", label: "Tips", title: "How to Set Household Rules Without Feeling Awkward", topics: ["Communication", "Boundaries", "Life Hacks"] },
+      { emoji: "🌙", label: "Culture", title: "Night Owl vs. Early Riser: Can You Make It Work?", topics: ["Lifestyle", "Sleep", "Harmony"] },
+      { emoji: "💸", label: "Guide", title: "Splitting Rent Fairly: Every Method Explained", topics: ["Finance", "Fairness", "Calculator"] },
+      { emoji: "😬", label: "Stories", title: "Real Roommate Disaster Stories (And What We Learned)", topics: ["Relatable", "Lessons", "Chaos"] },
+      { emoji: "🔑", label: "News", title: "Roomrr Is Launching — Here's What's Coming", topics: ["Product", "Features", "Beta"] },
+    ];
+
+    /* ============================================================
+       RENDER ENGINE
+    ============================================================ */
+
+    var ALL_CATEGORIES = ['All'];
+    if (BLOG_POSTS.length > 0) {
+      BLOG_POSTS.forEach(function(p) {
+        if (!ALL_CATEGORIES.includes(p.category)) ALL_CATEGORIES.push(p.category);
+      });
+    }
+
+    var activeFilter = 'All';
+
+    function renderFilters() {
+      if (BLOG_POSTS.length === 0) { document.getElementById('blogFilters').innerHTML = ''; return; }
+      var html = '<div class="blog-filters">';
+      ALL_CATEGORIES.forEach(function(cat) {
+        html += '<button class="filter-btn' + (cat === activeFilter ? ' active' : '') + '" data-cat="' + cat + '">' + cat + '</button>';
+      });
+      html += '<span class="blog-count" id="blogCount"></span></div>';
+      document.getElementById('blogFilters').innerHTML = html;
+      document.querySelectorAll('.filter-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          activeFilter = btn.dataset.cat;
+          document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          renderGrid();
+        });
+      });
+    }
+
+    function renderGrid() {
+      var grid = document.getElementById('blogGrid');
+      if (BLOG_POSTS.length === 0) {
+        grid.innerHTML = renderEmpty();
+        bindNotifyForm();
+        return;
+      }
+      var filtered = activeFilter === 'All' ? BLOG_POSTS : BLOG_POSTS.filter(function(p) { return p.category === activeFilter; });
+      var countEl = document.getElementById('blogCount');
+      if (countEl) countEl.textContent = filtered.length + ' post' + (filtered.length !== 1 ? 's' : '');
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="text-align:center;padding:4rem 2rem;color:var(--text-3);font-size:.9rem;">No posts in this category yet. Check back soon!</div>';
+        return;
+      }
+      var html = '<div class="blog-grid">';
+      filtered.forEach(function(post, idx) {
+        var isFeatured = post.featured && idx === 0;
+        html += renderCard(post, isFeatured);
+      });
+      html += '</div>';
+      grid.innerHTML = html;
+    }
+
+    function renderCard(post, isFeatured) {
+      return '<article class="blog-card' + (isFeatured ? ' featured' : '') + '" onclick="window.location.href=\'' + post.url + '\'" role="link" tabindex="0">' +
+        '<div class="blog-card-img-placeholder">' + post.emoji + '</div>' +
+        '<div class="blog-card-body">' +
+          '<div class="blog-card-meta">' +
+            '<span class="blog-tag">' + post.category + '</span>' +
+            '<span class="blog-date">' + post.date + '</span>' +
+            '<span class="blog-read-time">· ' + post.readTime + '</span>' +
+          '</div>' +
+          '<h2>' + post.title + '</h2>' +
+          '<p>' + post.excerpt + '</p>' +
+          '<div class="blog-card-footer">' +
+            '<div class="blog-author">' +
+              '<div class="blog-author-avatar">' + post.authorAvatar + '</div>' +
+              '<span class="blog-author-name">' + post.author + '</span>' +
+            '</div>' +
+            '<span class="blog-read-link">Read more <span>→</span></span>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+    }
+
+    function renderEmpty() {
+      var skeletonCards = UPCOMING_TOPICS.map(function(t) {
+        return '<div class="coming-soon-card">' +
+          '<div class="coming-soon-label"><span>' + t.emoji + '</span>' + t.label + '</div>' +
+          '<div class="skel-line tall w90"></div>' +
+          '<div class="skel-line w80"></div>' +
+          '<div class="skel-line w60"></div>' +
+          '<div class="coming-soon-topics">' +
+            t.topics.map(function(tp) { return '<span class="coming-soon-topic">' + tp + '</span>'; }).join('') +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      return '<div class="blog-empty">' +
+          '<div class="blog-empty-visual">' +
+            '<span class="blog-empty-emoji">✍️</span>' +
+            '<div class="blog-empty-dots"><div class="blog-empty-dot"></div><div class="blog-empty-dot"></div><div class="blog-empty-dot"></div></div>' +
+          '</div>' +
+          '<h2>No blogs <span class="gradient-text">yet.</span></h2>' +
+          '<p>Our writers are brewing something good. Sign up below and you\'ll be the first to know when our first post drops — tips, stories, and real talk about roommate life.</p>' +
+          '<div class="blog-empty-tags">' +
+            '<span class="blog-empty-tag">🏠 Roommate Tips</span>' +
+            '<span class="blog-empty-tag">🎯 Matching Guides</span>' +
+            '<span class="blog-empty-tag">💸 Rent &amp; Finance</span>' +
+            '<span class="blog-empty-tag">😂 Real Stories</span>' +
+            '<span class="blog-empty-tag">🌙 Lifestyle</span>' +
+          '</div>' +
+          '<form class="blog-notify-form" id="notifyForm" novalidate>' +
+            '<input type="email" class="blog-notify-input" id="notifyEmail" placeholder="your@email.com" required />' +
+            '<button type="submit" class="blog-notify-btn">🔔 Notify Me</button>' +
+          '</form>' +
+          '<p class="blog-notify-success" id="notifySuccess">🎉 You\'re on the list! We\'ll ping you when the first post goes live.</p>' +
+        '</div>' +
+        '<div style="margin-top:3rem;">' +
+          '<div style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--text-3);margin-bottom:1.2rem;">👀 Coming soon — topics we\'re working on</div>' +
+          '<div class="coming-soon-grid">' + skeletonCards + '</div>' +
+        '</div>';
+    }
+
+    function bindNotifyForm() {
+      var form = document.getElementById('notifyForm');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = document.getElementById('notifyEmail').value.trim();
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !re.test(email)) {
+          document.getElementById('notifyEmail').style.borderColor = 'var(--red)';
+          return;
+        }
+        // Store locally
+        try { var b = JSON.parse(localStorage.getItem('roomrr_blog_notify')||'[]'); b.push({email:email,ts:new Date().toISOString()}); localStorage.setItem('roomrr_blog_notify',JSON.stringify(b)); } catch(e) {}
+        form.style.display = 'none';
+        var s = document.getElementById('notifySuccess');
+        if (s) s.style.display = 'block';
+      });
+    }
+
+    /* ============================================================
+       INIT
+    ============================================================ */
+    renderFilters();
+    renderGrid();
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    (function(){var t=document.getElementById('themeToggle'),h=document.documentElement,s=localStorage.getItem('roomr-theme')||'dark';h.setAttribute('data-theme',s);if(t)t.checked=(s==='light');if(t)t.addEventListener('change',function(){var n=t.checked?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('roomr-theme',n);});})();
+    (function(){var nb=document.getElementById('navbar');window.addEventListener('scroll',function(){if(nb)nb.classList.toggle('scrolled',window.scrollY>60);},{passive:true});})();
+    (function(){var bar=document.getElementById('scrollProgress');window.addEventListener('scroll',function(){var sc=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(sc>0?(window.scrollY/sc)*100:0)+'%';},{passive:true});})();
+    (function(){var btt=document.getElementById('backToTop');window.addEventListener('scroll',function(){btt.classList.toggle('visible',window.scrollY>400);},{passive:true});btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
+  </script>
+</body>
+</html>

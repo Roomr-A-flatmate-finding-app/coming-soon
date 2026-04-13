@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Policy — Roomrr</title>
+  <meta name="description" content="Roomrr's Cookie Policy — how we use cookies and tracking technologies." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+    :root{--orange:#ea481e;--yellow:#f7940c;--black:#010101;--green:#4ade80;--red:#ef4444;--grad-brand:linear-gradient(135deg,var(--orange),var(--yellow));--grad-brand-text:linear-gradient(90deg,var(--orange),var(--yellow));--radius-sm:10px;--radius-md:16px;--radius-lg:24px;--radius-xl:32px;--radius-full:9999px;--transition:.28s cubic-bezier(.4,0,.2,1);--transition-spring:.5s cubic-bezier(.34,1.56,.64,1);--font:'Manrope',sans-serif;}
+    [data-theme="dark"]{--bg:#080808;--bg-2:#0e0e0e;--bg-3:#161616;--bg-card:#111111;--border:rgba(255,255,255,.07);--border-hover:rgba(255,255,255,.16);--text:#f2f2f2;--text-2:#9a9a9a;--text-3:#555555;--nav-bg:rgba(8,8,8,.88);--glow-orange:rgba(234,72,30,.28);}
+    [data-theme="light"]{--bg:#f9f8f6;--bg-2:#f3f2ef;--bg-3:#eceae5;--bg-card:#ffffff;--border:rgba(0,0,0,.07);--border-hover:rgba(0,0,0,.18);--text:#0a0a0a;--text-2:#5a5a5a;--text-3:#999999;--nav-bg:rgba(249,248,246,.92);--glow-orange:rgba(234,72,30,.12);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;transition:background .55s,color .55s;}
+    a{text-decoration:none;color:inherit;} ul{list-style:none;}
+
+    .noise-overlay{position:fixed;inset:0;z-index:99999;pointer-events:none;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:180px 180px;}
+    .scroll-progress{position:fixed;top:0;left:0;height:2.5px;width:0%;background:var(--grad-brand);z-index:99998;border-radius:0 2px 2px 0;transition:width .08s linear;box-shadow:0 0 8px var(--orange);}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 0;transition:background var(--transition),backdrop-filter var(--transition),box-shadow var(--transition),padding var(--transition);}
+    .navbar.scrolled{background:var(--nav-bg);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:0 1px 0 var(--border);padding:.7rem 0;}
+    .nav-inner{width:min(1200px,92%);margin:0 auto;display:flex;align-items:center;gap:2rem;}
+    .nav-logo{display:inline-flex;align-items:center;gap:0;text-decoration:none;margin-right:auto;}
+    .logo-letter{font-family:var(--font);font-size:1.55rem;font-weight:800;letter-spacing:-.04em;color:#fff;line-height:1;}
+    [data-theme="light"] .logo-letter{color:var(--black);}
+    .logo-img{height:1.25rem;width:auto;display:block;object-fit:contain;margin-top:-1px;}
+    .nav-actions{display:flex;align-items:center;gap:.9rem;}
+    .theme-toggle{position:relative;cursor:pointer;}
+    .theme-toggle input{position:absolute;opacity:0;width:0;height:0;}
+    .toggle-track{display:flex;align-items:center;width:50px;height:26px;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-full);padding:2px;cursor:pointer;transition:background var(--transition);}
+    .toggle-thumb{width:20px;height:20px;background:var(--grad-brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;transition:transform var(--transition-spring);position:relative;overflow:hidden;}
+    .toggle-icon{position:absolute;transition:opacity var(--transition),transform var(--transition);}
+    .toggle-icon.moon{opacity:1;transform:scale(1);} .toggle-icon.sun{opacity:0;transform:scale(.5);}
+    input:checked~.toggle-track .toggle-thumb{transform:translateX(24px);}
+    input:checked~.toggle-track .toggle-icon.moon{opacity:0;transform:scale(.5);}
+    input:checked~.toggle-track .toggle-icon.sun{opacity:1;transform:scale(1);}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-size:.82rem;font-weight:700;padding:8px 18px;border-radius:var(--radius-full);border:none;outline:none;transition:transform var(--transition-spring),box-shadow var(--transition);white-space:nowrap;cursor:pointer;}
+    .btn-primary{background:var(--grad-brand);color:#fff;box-shadow:0 2px 12px var(--glow-orange);}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--glow-orange);}
+
+    .policy-hero{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 5% 4rem;position:relative;overflow:hidden;}
+    .policy-hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0;}
+    .mesh-blob{position:absolute;border-radius:50%;filter:blur(90px);}
+    .blob-1{width:500px;height:500px;background:var(--orange);opacity:.1;top:-30%;left:-10%;animation:blobPulse 9s ease-in-out infinite;}
+    .blob-2{width:300px;height:300px;background:var(--yellow);opacity:.07;bottom:-20%;right:10%;animation:blobPulse 11s ease-in-out infinite reverse;}
+    .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;opacity:.4;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);}
+    @keyframes blobPulse{0%,100%{transform:scale(1) translate(0,0);}35%{transform:scale(1.08) translate(18px,-18px);}68%{transform:scale(.94) translate(-12px,14px);}}
+    .policy-hero-label{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--orange);border:1px solid rgba(234,72,30,.35);background:rgba(234,72,30,.07);padding:5px 14px;border-radius:var(--radius-full);margin-bottom:1.2rem;position:relative;z-index:1;animation:fadeUp .6s ease both;}
+    .policy-hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;letter-spacing:-.05em;line-height:1.08;position:relative;z-index:1;animation:fadeUp .6s .1s ease both;}
+    .gradient-text{background:var(--grad-brand-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .policy-hero p{font-size:.95rem;color:var(--text-2);margin-top:1rem;max-width:480px;line-height:1.7;position:relative;z-index:1;animation:fadeUp .6s .2s ease both;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+    .policy-layout{width:min(1200px,92%);margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:3rem;padding:3rem 0 6rem;align-items:start;}
+    .toc{position:sticky;top:100px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:24px;overflow:hidden;}
+    .toc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-brand);}
+    .toc-title{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--text-3);margin-bottom:1rem;}
+    .toc ul{display:flex;flex-direction:column;gap:2px;}
+    .toc a{display:block;font-size:.82rem;font-weight:500;color:var(--text-2);padding:7px 10px;border-radius:var(--radius-sm);transition:background var(--transition),color var(--transition),padding-left var(--transition);border-left:2px solid transparent;}
+    .toc a:hover,.toc a.active{background:rgba(234,72,30,.07);color:var(--orange);border-left-color:var(--orange);padding-left:14px;}
+    .toc-footer{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.74rem;color:var(--text-3);line-height:1.5;}
+    .policy-content{min-width:0;}
+    .info-bar{display:flex;flex-wrap:wrap;gap:1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:2.5rem;font-size:.82rem;color:var(--text-2);}
+    .info-chip{display:flex;align-items:center;gap:6px;font-weight:600;}
+    .info-chip span:first-child{font-size:1rem;}
+    .policy-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:36px 36px 32px;margin-bottom:1.5rem;position:relative;overflow:hidden;transition:border-color var(--transition),box-shadow var(--transition);}
+    .policy-section:hover{border-color:var(--border-hover);box-shadow:0 8px 32px rgba(0,0,0,.1);}
+    .policy-section::before{content:'';position:absolute;top:0;left:0;width:3px;bottom:0;background:var(--grad-brand);border-radius:0 2px 2px 0;opacity:0;transition:opacity var(--transition);}
+    .policy-section:hover::before{opacity:1;}
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(234,72,30,.1);border:1px solid rgba(234,72,30,.2);font-size:.7rem;font-weight:800;color:var(--orange);margin-bottom:12px;}
+    .policy-section h2{font-size:1.15rem;font-weight:800;letter-spacing:-.03em;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+    .section-icon{font-size:1.2rem;}
+    .policy-section p{font-size:.9rem;color:var(--text-2);line-height:1.78;margin-bottom:14px;}
+    .policy-section p:last-child{margin-bottom:0;}
+    .policy-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin:12px 0;padding-left:0;}
+    .policy-list li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text-2);line-height:1.65;}
+    .policy-list li::before{content:'→';color:var(--orange);font-weight:700;flex-shrink:0;margin-top:1px;}
+    .highlight-box{background:rgba(234,72,30,.06);border:1px solid rgba(234,72,30,.2);border-radius:var(--radius-md);padding:16px 20px;margin:16px 0;font-size:.85rem;color:var(--text-2);line-height:1.7;}
+    .highlight-box strong{color:var(--orange);}
+    .green-box{background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.2);border-radius:var(--radius-md);padding:16px 20px;margin:16px 0;font-size:.85rem;color:var(--text-2);line-height:1.7;}
+    .green-box strong{color:var(--green);}
+
+    /* COOKIE TYPE CARDS */
+    .cookie-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:20px 0;}
+    .cookie-card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:border-color var(--transition),transform var(--transition-spring);}
+    .cookie-card:hover{border-color:var(--orange);transform:translateY(-4px);}
+    .cookie-card-icon{font-size:1.8rem;margin-bottom:10px;display:block;}
+    .cookie-card-type{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:6px;display:block;}
+    .cookie-card h3{font-size:.9rem;font-weight:700;margin-bottom:8px;letter-spacing:-.02em;}
+    .cookie-card p{font-size:.8rem;color:var(--text-2);line-height:1.6;margin-bottom:8px;}
+    .cookie-card-duration{font-size:.7rem;font-weight:600;color:var(--text-3);background:var(--bg-card);padding:3px 10px;border-radius:var(--radius-full);display:inline-block;border:1px solid var(--border);}
+
+    /* TOGGLE PANEL */
+    .pref-panel{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin:20px 0;}
+    .pref-row{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border);gap:1rem;}
+    .pref-row:last-child{border-bottom:none;}
+    .pref-info strong{display:block;font-size:.88rem;font-weight:700;margin-bottom:3px;}
+    .pref-info span{font-size:.78rem;color:var(--text-2);}
+    .pref-toggle{position:relative;flex-shrink:0;}
+    .pref-toggle input{position:absolute;opacity:0;width:0;height:0;}
+    .pref-toggle-track{display:flex;align-items:center;width:44px;height:24px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-full);padding:2px;cursor:pointer;transition:background var(--transition);}
+    .pref-toggle input:checked~.pref-toggle-track{background:var(--grad-brand);border-color:transparent;}
+    .pref-toggle-thumb{width:18px;height:18px;background:#fff;border-radius:50%;transition:transform var(--transition-spring);}
+    .pref-toggle input:checked~.pref-toggle-track .pref-toggle-thumb{transform:translateX(20px);}
+    .required-badge{font-size:.62rem;font-weight:700;color:var(--green);background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);padding:2px 8px;border-radius:var(--radius-full);}
+
+    .policy-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.84rem;}
+    .policy-table th{background:rgba(234,72,30,.08);color:var(--orange);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:10px 14px;text-align:left;border-bottom:1px solid rgba(234,72,30,.2);}
+    .policy-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;line-height:1.6;}
+    .policy-table tr:last-child td{border-bottom:none;}
+    .policy-table tr:hover td{background:rgba(255,255,255,.02);}
+
+    .contact-card{background:var(--grad-brand);border-radius:var(--radius-xl);padding:36px;text-align:center;color:#fff;margin-top:1.5rem;position:relative;overflow:hidden;}
+    .contact-card::before{content:'';position:absolute;inset:-40%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%);pointer-events:none;}
+    .contact-card h3{font-size:1.3rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px;position:relative;z-index:1;}
+    .contact-card p{font-size:.88rem;opacity:.88;margin-bottom:1.4rem;position:relative;z-index:1;}
+    .contact-card a{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);color:#fff;font-weight:700;font-size:.88rem;padding:12px 24px;border-radius:var(--radius-full);transition:background var(--transition),transform var(--transition-spring);position:relative;z-index:1;}
+    .contact-card a:hover{background:rgba(255,255,255,.28);transform:translateY(-2px);}
+
+    .footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 5%;}
+    .footer-inner{width:min(1200px,92%);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-logo-wrap{display:flex;align-items:center;gap:0;}
+    .footer-logo-letter{font-family:var(--font);font-size:1.3rem;font-weight:800;letter-spacing:-.04em;color:#fff;}
+    [data-theme="light"] .footer-logo-letter{color:var(--black);}
+    .footer-logo-img{height:1rem;width:auto;display:block;object-fit:contain;margin-top:-1px;}
+    .footer-copy{font-size:.78rem;color:var(--text-3);}
+    .footer-links-row{display:flex;gap:1.5rem;}
+    .footer-links-row a{font-size:.82rem;color:var(--text-2);transition:color var(--transition);}
+    .footer-links-row a:hover{color:var(--orange);}
+    .footer-links-row a.active{color:var(--orange);font-weight:700;}
+    .back-to-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--grad-brand);color:#fff;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(234,72,30,.28);z-index:9000;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .28s,visibility .28s,transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .28s;}
+    .back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0);}
+    .back-to-top:hover{box-shadow:0 8px 32px rgba(234,72,30,.4);transform:translateY(-3px);}
+    @media(max-width:900px){.policy-layout{grid-template-columns:1fr;}.toc{position:static;}}
+    @media(max-width:600px){.policy-section{padding:24px 20px;}.policy-hero{padding:8rem 5% 3rem;}.cookie-cards{grid-template-columns:1fr;}.footer-inner{flex-direction:column;align-items:flex-start;}.footer-links-row{flex-wrap:wrap;gap:1rem;}}
+  </style>
+</head>
+<body>
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Roomrr home">
+        <span class="logo-letter" style="margin-right:2px;margin-bottom:4px">r</span>
+        <img src="logo.png" class="logo-img" alt="" aria-hidden="true" />
+        <span class="logo-letter">mrr</span>
+      </a>
+      <div class="nav-actions">
+        <label class="theme-toggle" aria-label="Toggle dark/light mode">
+          <input type="checkbox" id="themeToggle" />
+          <span class="toggle-track"><span class="toggle-thumb"><span class="toggle-icon moon">🌙</span><span class="toggle-icon sun">☀️</span></span></span>
+        </label>
+        <a href="index.html#waitlist" class="btn btn-primary"><span>Get Early Access</span><span>↗</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="policy-hero">
+    <div class="policy-hero-bg">
+      <div class="mesh-blob blob-1"></div>
+      <div class="mesh-blob blob-2"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="policy-hero-label">🍪 Cookies</div>
+    <h1>Cookie <span class="gradient-text">Policy</span></h1>
+    <p>We use cookies to make Roomrr work well. Here's exactly what cookies we use, why, and how to control them.</p>
+  </section>
+
+  <main class="policy-layout">
+    <aside class="toc" aria-label="Table of contents">
+      <div class="toc-title">On this page</div>
+      <ul>
+        <li><a href="#what-are-cookies" class="toc-link">1. What Are Cookies?</a></li>
+        <li><a href="#types" class="toc-link">2. Types We Use</a></li>
+        <li><a href="#third-party-cookies" class="toc-link">3. Third-Party Cookies</a></li>
+        <li><a href="#specific-cookies" class="toc-link">4. Specific Cookies</a></li>
+        <li><a href="#your-choices" class="toc-link">5. Your Choices</a></li>
+        <li><a href="#consent" class="toc-link">6. Consent</a></li>
+        <li><a href="#changes" class="toc-link">7. Policy Changes</a></li>
+        <li><a href="#contact" class="toc-link">8. Contact</a></li>
+      </ul>
+      <div class="toc-footer"><strong>Last updated:</strong><br/>April 11, 2026<br/><br/><strong>Scope:</strong><br/>roomrr.app &amp; all subdomains</div>
+    </aside>
+
+    <div class="policy-content">
+      <div class="info-bar">
+        <div class="info-chip"><span>📅</span><span>Last updated: April 11, 2026</span></div>
+        <div class="info-chip"><span>🍪</span><span>4 cookie categories</span></div>
+        <div class="info-chip"><span>🔒</span><span>You're always in control</span></div>
+        <div class="info-chip"><span>✉️</span><span>privacy@roomrr.app</span></div>
+      </div>
+
+      <section class="policy-section" id="what-are-cookies">
+        <div class="section-num">01</div>
+        <h2><span class="section-icon">🍪</span> What Are Cookies?</h2>
+        <p>Cookies are small text files placed on your device (computer, tablet, or mobile phone) when you visit a website. They are widely used by websites to make them work more efficiently and to provide reporting information.</p>
+        <p>Cookies can be "session cookies" — which expire when you close your browser — or "persistent cookies" — which remain on your device for a defined period or until you delete them. Cookies set by the website you're visiting are called "first-party cookies." Cookies set by other organisations are called "third-party cookies."</p>
+        <p>We also use similar tracking technologies like web beacons (tiny transparent images), local storage, and session storage. This policy covers all of these technologies collectively.</p>
+        <div class="green-box"><strong>✅ Quick version:</strong> Cookies help us keep you logged in, remember your preferences, and understand how you use Roomrr so we can keep improving it. Some are strictly necessary; others are optional and require your consent.</div>
+      </section>
+
+      <section class="policy-section" id="types">
+        <div class="section-num">02</div>
+        <h2><span class="section-icon">📦</span> Types of Cookies We Use</h2>
+        <p>We use four categories of cookies. Here's what each does:</p>
+        <div class="cookie-cards">
+          <div class="cookie-card">
+            <span class="cookie-card-icon">🔑</span>
+            <span class="cookie-card-type">Essential</span>
+            <h3>Strictly Necessary</h3>
+            <p>Required for the Platform to function. These enable login sessions, security tokens, and form submissions. You cannot opt out of these.</p>
+            <span class="cookie-card-duration">Session – 30 days</span>
+          </div>
+          <div class="cookie-card">
+            <span class="cookie-card-icon">⚙️</span>
+            <span class="cookie-card-type">Functional</span>
+            <h3>Preference Cookies</h3>
+            <p>Remember your settings — dark/light theme, language, onboarding state — so you don't have to re-set them every visit.</p>
+            <span class="cookie-card-duration">Up to 1 year</span>
+          </div>
+          <div class="cookie-card">
+            <span class="cookie-card-icon">📊</span>
+            <span class="cookie-card-type">Analytics</span>
+            <h3>Performance Cookies</h3>
+            <p>Help us understand how users navigate the Platform. We use Google Analytics 4 with IP anonymisation — no individual is identified.</p>
+            <span class="cookie-card-duration">Up to 2 years</span>
+          </div>
+          <div class="cookie-card">
+            <span class="cookie-card-icon">📣</span>
+            <span class="cookie-card-type">Marketing</span>
+            <h3>Targeting Cookies</h3>
+            <p>Used to serve relevant ads on third-party platforms (Instagram, Google). Only placed with your explicit consent.</p>
+            <span class="cookie-card-duration">Up to 90 days</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="policy-section" id="third-party-cookies">
+        <div class="section-num">03</div>
+        <h2><span class="section-icon">🔗</span> Third-Party Cookies</h2>
+        <p>Some cookies on our Platform are set by third-party services we use. These third parties have their own privacy policies which we encourage you to review:</p>
+        <table class="policy-table">
+          <thead>
+            <tr><th>Service</th><th>Purpose</th><th>Category</th><th>Privacy Policy</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Google Analytics 4</strong></td><td>Usage analytics, funnel analysis</td><td>Analytics</td><td>policies.google.com/privacy</td></tr>
+            <tr><td><strong>Google Tag Manager</strong></td><td>Managing tracking scripts</td><td>Analytics</td><td>policies.google.com/privacy</td></tr>
+            <tr><td><strong>Meta Pixel</strong></td><td>Facebook/Instagram ad measurement</td><td>Marketing</td><td>facebook.com/privacy/policy</td></tr>
+            <tr><td><strong>Razorpay</strong></td><td>Payment processing security</td><td>Essential</td><td>razorpay.com/privacy</td></tr>
+            <tr><td><strong>Formspree</strong></td><td>Waitlist form submission</td><td>Essential</td><td>formspree.io/legal/privacy-policy</td></tr>
+          </tbody>
+        </table>
+        <p>We do not control third-party cookies and cannot prevent them from being set once you consent to the relevant category. If you want to opt out of third-party cookies specifically, visit the respective third party's opt-out page.</p>
+      </section>
+
+      <section class="policy-section" id="specific-cookies">
+        <div class="section-num">04</div>
+        <h2><span class="section-icon">🔍</span> Specific Cookies We Set</h2>
+        <table class="policy-table">
+          <thead>
+            <tr><th>Cookie Name</th><th>Purpose</th><th>Type</th><th>Duration</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>roomrr_session</code></td><td>Keeps you logged in during your session</td><td>Essential</td><td>Session</td></tr>
+            <tr><td><code>roomrr_auth_token</code></td><td>Persistent login (Remember Me)</td><td>Essential</td><td>30 days</td></tr>
+            <tr><td><code>roomrr_theme</code></td><td>Stores dark/light mode preference</td><td>Functional</td><td>1 year</td></tr>
+            <tr><td><code>roomrr_onboarded</code></td><td>Tracks whether onboarding tour has been shown</td><td>Functional</td><td>6 months</td></tr>
+            <tr><td><code>roomrr_csrf</code></td><td>Cross-site request forgery protection token</td><td>Essential</td><td>Session</td></tr>
+            <tr><td><code>_ga</code></td><td>Google Analytics — distinguishes users</td><td>Analytics</td><td>2 years</td></tr>
+            <tr><td><code>_ga_KEKWNX9H4T</code></td><td>Google Analytics — session state</td><td>Analytics</td><td>2 years</td></tr>
+            <tr><td><code>_fbp</code></td><td>Meta Pixel — ad conversion tracking</td><td>Marketing</td><td>90 days</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="policy-section" id="your-choices">
+        <div class="section-num">05</div>
+        <h2><span class="section-icon">🎛️</span> Your Choices & Preferences</h2>
+        <p>You are in control of which optional cookies are set. Below are your current preferences. Note that Essential cookies cannot be disabled as they are required for the Platform to function.</p>
+
+        <div class="pref-panel">
+          <div class="pref-row">
+            <div class="pref-info">
+              <strong>🔑 Essential Cookies</strong>
+              <span>Login sessions, security, form submissions. Cannot be disabled.</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="required-badge">Required</span>
+            </div>
+          </div>
+          <div class="pref-row">
+            <div class="pref-info">
+              <strong>⚙️ Functional / Preference Cookies</strong>
+              <span>Theme, language, and personalisation settings.</span>
+            </div>
+            <label class="pref-toggle" aria-label="Toggle functional cookies">
+              <input type="checkbox" id="funcCookie" checked />
+              <span class="pref-toggle-track"><span class="pref-toggle-thumb"></span></span>
+            </label>
+          </div>
+          <div class="pref-row">
+            <div class="pref-info">
+              <strong>📊 Analytics Cookies</strong>
+              <span>Helps us understand usage and improve the Platform.</span>
+            </div>
+            <label class="pref-toggle" aria-label="Toggle analytics cookies">
+              <input type="checkbox" id="analyticsCookie" checked />
+              <span class="pref-toggle-track"><span class="pref-toggle-thumb"></span></span>
+            </label>
+          </div>
+          <div class="pref-row">
+            <div class="pref-info">
+              <strong>📣 Marketing Cookies</strong>
+              <span>Targeted ads on social platforms based on your interests.</span>
+            </div>
+            <label class="pref-toggle" aria-label="Toggle marketing cookies">
+              <input type="checkbox" id="marketingCookie" />
+              <span class="pref-toggle-track"><span class="pref-toggle-thumb"></span></span>
+            </label>
+          </div>
+        </div>
+
+        <p>You can also manage cookies through your browser settings:</p>
+        <ul class="policy-list">
+          <li><strong>Chrome:</strong> Settings → Privacy &amp; Security → Cookies and other site data</li>
+          <li><strong>Firefox:</strong> Settings → Privacy &amp; Security → Cookies and Site Data</li>
+          <li><strong>Safari:</strong> Preferences → Privacy → Manage Website Data</li>
+          <li><strong>Edge:</strong> Settings → Cookies and site permissions → Manage and delete cookies</li>
+        </ul>
+        <div class="highlight-box"><strong>⚠️ Note:</strong> Disabling essential cookies through your browser settings will break core Platform functionality, including the ability to log in. We recommend using the preference panel above instead of blanket browser blocking.</div>
+      </section>
+
+      <section class="policy-section" id="consent">
+        <div class="section-num">06</div>
+        <h2><span class="section-icon">✅</span> Consent</h2>
+        <p>When you first visit Roomrr, we display a cookie consent banner. By clicking "Accept All" you consent to all cookie categories. By clicking "Manage Preferences" you can choose which optional categories to enable.</p>
+        <ul class="policy-list">
+          <li>Essential cookies are deployed immediately on visit without requiring consent, as they are necessary for the Platform to function.</li>
+          <li>Functional, Analytics, and Marketing cookies are only placed after you provide consent.</li>
+          <li>You may withdraw your consent at any time using the preference panel on this page or by contacting us at privacy@roomrr.app.</li>
+          <li>Withdrawal of consent does not affect the lawfulness of prior cookie usage.</li>
+        </ul>
+        <p>We record your consent preferences with a timestamp. Your consent record is stored for 12 months, after which we will ask for your consent again.</p>
+      </section>
+
+      <section class="policy-section" id="changes">
+        <div class="section-num">07</div>
+        <h2><span class="section-icon">📣</span> Policy Changes</h2>
+        <p>We may update this Cookie Policy from time to time — for example, when we add new third-party services or change how we use cookies. When we make material changes, we will update the "Last Updated" date and notify registered users by email. Non-material changes (like adding a new cookie in the same category) may be made without specific notice.</p>
+        <p>Continued use of the Platform after the updated policy takes effect constitutes acceptance of the changes.</p>
+      </section>
+
+      <section class="policy-section" id="contact">
+        <div class="section-num">08</div>
+        <h2><span class="section-icon">📬</span> Contact</h2>
+        <p>If you have any questions about our use of cookies or this Cookie Policy, please contact us:</p>
+        <ul class="policy-list">
+          <li><strong>Email:</strong> privacy@roomrr.app</li>
+          <li><strong>Company:</strong> Roomrr Technologies Private Limited</li>
+          <li><strong>Response time:</strong> Within 48 hours on business days</li>
+        </ul>
+      </section>
+
+      <div class="contact-card">
+        <h3>Cookie questions? 🍪</h3>
+        <p>We'll explain everything — no jargon, no runaround.</p>
+        <a href="mailto:privacy@roomrr.app">✉️ privacy@roomrr.app</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-wrap">
+          <span class="footer-logo-letter" style="margin-right:2px;margin-bottom:4px">r</span>
+          <img src="logo.png" class="footer-logo-img" alt="" aria-hidden="true" />
+          <span class="footer-logo-letter">mrr</span>
+        </div>
+        <div class="footer-copy" style="margin-top:6px;">© 2026 Roomrr. All rights reserved.</div>
+      </div>
+      <nav class="footer-links-row" aria-label="Legal links">
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="terms_of_service.html">Terms of Service</a>
+        <a href="cookies.html" class="active">Cookie Policy</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 15V5M10 5L5 10M10 5L15 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script>
+    (function(){var t=document.getElementById('themeToggle'),h=document.documentElement,s=localStorage.getItem('roomr-theme')||'dark';h.setAttribute('data-theme',s);if(t)t.checked=(s==='light');if(t)t.addEventListener('change',function(){var n=t.checked?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('roomr-theme',n);});})();
+    (function(){var nb=document.getElementById('navbar');window.addEventListener('scroll',function(){if(nb)nb.classList.toggle('scrolled',window.scrollY>60);},{passive:true});})();
+    (function(){var bar=document.getElementById('scrollProgress');window.addEventListener('scroll',function(){var sc=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(sc>0?(window.scrollY/sc)*100:0)+'%';},{passive:true});})();
+    (function(){var btt=document.getElementById('backToTop');window.addEventListener('scroll',function(){btt.classList.toggle('visible',window.scrollY>400);},{passive:true});btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
+    (function(){var links=document.querySelectorAll('.toc-link'),sections=Array.from(document.querySelectorAll('.policy-section'));window.addEventListener('scroll',function(){var y=window.scrollY+120,cur='';sections.forEach(function(s){if(s.offsetTop<=y)cur=s.id;});links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+cur);});},{passive:true});})();
+  </script>
+</body>
+</html>

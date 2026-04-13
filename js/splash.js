@@ -198,7 +198,7 @@
       '<div class="sp-blob sp-blob-2"></div>',
       '<div id="splashWordmark">',
         '<span id="splashR1" style="margin-right:2px;margin-bottom:4px">r</span>',
-        '<img id="splashLogo" src="logo.png" alt="" aria-hidden="true" />',
+        '<img id="splashLogo" src="images/logo.png" alt="" aria-hidden="true" />',
         '<span id="splashMR">mrr</span>',
       '</div>',
       '<span id="splashTag">Find your tribe.</span>',
